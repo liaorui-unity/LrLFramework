@@ -1,0 +1,672 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc69f8a509a8534d940e97f91283471, type: 3}
+  m_Name: subtitle
+  m_EditorClassIdentifier: 
+  urlPath: Assets/Resoucres/Audio/Clip/sub_1
+  audioLists:
+  - clipName: 01_03_07
+    clips:
+    - clipName: 01_03_07
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_07.wav
+      clipSoundData: {fileID: 8300000, guid: 05d638a2a615e5a4f82e07909e900163, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 28.825
+    - clipName: 01_03_07
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_07.wav
+      clipSoundData: {fileID: 8300000, guid: 87f13a73170024f40bf50fd6953e2b34, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 28.825
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_09
+    clips:
+    - clipName: 01_03_09
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_09.wav
+      clipSoundData: {fileID: 8300000, guid: 6c02ecfae1688fd438079edb8fb81aa7, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 28.375
+    - clipName: 01_03_09
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_09.wav
+      clipSoundData: {fileID: 8300000, guid: 029daedaada0b0e49b2aa63fdda133c1, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 28.375
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_11
+    clips:
+    - clipName: 01_03_11
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_11.wav
+      clipSoundData: {fileID: 8300000, guid: 8704c9239a17879449a06c219948842e, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 29.4875
+    - clipName: 01_03_11
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_11.wav
+      clipSoundData: {fileID: 8300000, guid: 1bc3ca7d3becea54f8c3179f641359e8, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 29.4875
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_13
+    clips:
+    - clipName: 01_03_13
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_13.wav
+      clipSoundData: {fileID: 8300000, guid: 19bba53c27aa9b3428116095eb620213, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 15.5375
+    - clipName: 01_03_13
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_13.wav
+      clipSoundData: {fileID: 8300000, guid: 8ffb7e092019a7c46874fb24dd48bd2f, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 15.5375
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_16
+    clips:
+    - clipName: 01_03_16
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_16.wav
+      clipSoundData: {fileID: 8300000, guid: d60b82acbb35e3143b03a94a52df4159, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 6.8968124
+    - clipName: 01_03_16
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_16.wav
+      clipSoundData: {fileID: 8300000, guid: cce13066f61588f4581e1303ec6f4b21, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 6.8968124
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_17
+    clips:
+    - clipName: 01_03_17
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_17.wav
+      clipSoundData: {fileID: 8300000, guid: 7107dd5e1d9bb704d88c0b667599bc99, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 3.1875
+    - clipName: 01_03_17
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_17.wav
+      clipSoundData: {fileID: 8300000, guid: f75af9a8282eb014080836199f960980, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 3.1875
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_18
+    clips:
+    - clipName: 01_03_18
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_18.wav
+      clipSoundData: {fileID: 8300000, guid: 392d237148137264f9a6ec91c6fe9ba3, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 15.5625
+    - clipName: 01_03_18
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_18.wav
+      clipSoundData: {fileID: 8300000, guid: 5533a888f7acdb44cbdce13db7682778, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 15.5625
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_19
+    clips:
+    - clipName: 01_03_19
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_19.wav
+      clipSoundData: {fileID: 8300000, guid: 22081fe4613018d4cbf01d395d6f5acf, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 7.85
+    - clipName: 01_03_19
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_19.wav
+      clipSoundData: {fileID: 8300000, guid: b54367a81cf8a2643a492b939ede24c1, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 7.85
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_20
+    clips:
+    - clipName: 01_03_20
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_20.wav
+      clipSoundData: {fileID: 8300000, guid: 540b96f3ba43ea144a6b6b73057568a8, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 3.525
+    - clipName: 01_03_20
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_20.wav
+      clipSoundData: {fileID: 8300000, guid: e31a73bda80fb8c4fa510b522af129c0, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 3.525
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_21
+    clips:
+    - clipName: 01_03_21
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_21.wav
+      clipSoundData: {fileID: 8300000, guid: 1526e50362db02b499e863d7c24901aa, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 2.325
+    - clipName: 01_03_21
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_21.wav
+      clipSoundData: {fileID: 8300000, guid: 22e6c0ed91971c54ba1c2706bad56713, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 2.325
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_23
+    clips:
+    - clipName: 01_03_23
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_23.wav
+      clipSoundData: {fileID: 8300000, guid: c77ef07a493806f4f8d33f13a8a96945, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 3.0625
+    - clipName: 01_03_23
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_23.wav
+      clipSoundData: {fileID: 8300000, guid: e8f9f73b183d6bf4ab6c16ef3a3a2525, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 3.0625
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_24
+    clips:
+    - clipName: 01_03_24
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_24.wav
+      clipSoundData: {fileID: 8300000, guid: 20eb6bb1e7cfc3148b157099de8a4adc, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 8.65
+    - clipName: 01_03_24
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_24.wav
+      clipSoundData: {fileID: 8300000, guid: d58ddbecb92ee2846a2a65e5dcc7053a, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 8.65
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_26
+    clips:
+    - clipName: 01_03_26
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_26.wav
+      clipSoundData: {fileID: 8300000, guid: e13d8759d97bbbb4d8f68e8dc9b6b1df, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 2.5
+    - clipName: 01_03_26
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_26.wav
+      clipSoundData: {fileID: 8300000, guid: f1ab2d1c625497745a5d70aaca0f590e, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 2.5
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_27
+    clips:
+    - clipName: 01_03_27
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_27.wav
+      clipSoundData: {fileID: 8300000, guid: 78d771673f2448e45824e673083a7bab, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 3.7625
+    - clipName: 01_03_27
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_27.wav
+      clipSoundData: {fileID: 8300000, guid: 0726b58029fc7b14b8f9f47984f0851d, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 3.7625
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_28
+    clips:
+    - clipName: 01_03_28
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_28.wav
+      clipSoundData: {fileID: 8300000, guid: d8d90185ae492ab4da7c54c05f36b0fb, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 2.475
+    - clipName: 01_03_28
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_28.wav
+      clipSoundData: {fileID: 8300000, guid: 6aae41cf54a553841aa484d130448f77, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 2.475
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_30
+    clips:
+    - clipName: 01_03_30
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_30.wav
+      clipSoundData: {fileID: 8300000, guid: 736df7dbf8fcf29438f76cecb3d8af04, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 20.3875
+    - clipName: 01_03_30
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_30.wav
+      clipSoundData: {fileID: 8300000, guid: 45468de35a358f24faf0fdd2e2735f89, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 20.3875
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_31
+    clips:
+    - clipName: 01_03_31
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_31.wav
+      clipSoundData: {fileID: 8300000, guid: 7cba80033c61ed947a33de79e74397c2, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 2.15
+    - clipName: 01_03_31
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_31.wav
+      clipSoundData: {fileID: 8300000, guid: 7f718fb52fdcc0949be111edec2ee0ca, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 2.15
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_32
+    clips:
+    - clipName: 01_03_32
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_32.wav
+      clipSoundData: {fileID: 8300000, guid: fce5a6a4946eec846839b0873e87c120, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 5.7
+    - clipName: 01_03_32
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_32.wav
+      clipSoundData: {fileID: 8300000, guid: 65b2b66320be532418e3930b9d7df83e, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 5.7
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_33
+    clips:
+    - clipName: 01_03_33
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_33.wav
+      clipSoundData: {fileID: 8300000, guid: 6f22b77a32de9fc488ff7c44e58c8c5c, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 3.825
+    - clipName: 01_03_33
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_33.wav
+      clipSoundData: {fileID: 8300000, guid: 1e5ffa994bf636f47869aedff3c734a7, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 3.825
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_34
+    clips:
+    - clipName: 01_03_34
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_34.wav
+      clipSoundData: {fileID: 8300000, guid: 8e9d19aeda40ebb4cbb6a64db85bb314, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 3.9875
+    - clipName: 01_03_34
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_34.wav
+      clipSoundData: {fileID: 8300000, guid: 67c46116ccbe6124fb1fe7e9360aca98, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 3.9875
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_35
+    clips:
+    - clipName: 01_03_35
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_35.wav
+      clipSoundData: {fileID: 8300000, guid: f08791057e81bcb42b53dbba656e81d9, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 4.5375
+    - clipName: 01_03_35
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_35.wav
+      clipSoundData: {fileID: 8300000, guid: cfdea5b30a8dc7941b94f2a3b85ff1d2, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 4.5375
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_36
+    clips:
+    - clipName: 01_03_36
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_36.wav
+      clipSoundData: {fileID: 8300000, guid: 459b80cad6d712b4cb4369ba92f7ccd2, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 5.7
+    - clipName: 01_03_36
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_36.wav
+      clipSoundData: {fileID: 8300000, guid: beddcf65853565c4c89e1253e597992e, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 5.7
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_37
+    clips:
+    - clipName: 01_03_37
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_37.wav
+      clipSoundData: {fileID: 8300000, guid: 6d84971ac29ffa44f8f9d76487c8332d, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 3.5
+    - clipName: 01_03_37
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_37.wav
+      clipSoundData: {fileID: 8300000, guid: b22f9da27d7cf1d43918f71387f737b1, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 3.5
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_38
+    clips:
+    - clipName: 01_03_38
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_38.wav
+      clipSoundData: {fileID: 8300000, guid: 30655d86cf16bff40bcc685c7788b7fc, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 8.0625
+    - clipName: 01_03_38
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_38.wav
+      clipSoundData: {fileID: 8300000, guid: dbefccbce1a093c48812230d78d62bd1, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 8.0625
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_39
+    clips:
+    - clipName: 01_03_39
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_39.wav
+      clipSoundData: {fileID: 8300000, guid: b100f9e749ae020429e22dcbc244cf35, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 2.125
+    - clipName: 01_03_39
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_39.wav
+      clipSoundData: {fileID: 8300000, guid: c98cb6d115ce29946b656f1fa3d87dd4, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 2.125
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_40
+    clips:
+    - clipName: 01_03_40
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_40.wav
+      clipSoundData: {fileID: 8300000, guid: 9840c07f53e42a24c8cd3e7b23e6977a, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 24.6875
+    - clipName: 01_03_40
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_40.wav
+      clipSoundData: {fileID: 8300000, guid: 4cfb66d9b214de346aac9164f3400ff2, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 24.6875
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_43
+    clips:
+    - clipName: 01_03_43
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_43.wav
+      clipSoundData: {fileID: 8300000, guid: b6d83479a935d764a99dbf9251cce52d, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 7.7125
+    - clipName: 01_03_43
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_43.wav
+      clipSoundData: {fileID: 8300000, guid: 7ba3b4a1657aea243a7a1d6fa6036e5e, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 7.7125
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_44
+    clips:
+    - clipName: 01_03_44
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_44.wav
+      clipSoundData: {fileID: 8300000, guid: 7a13ba2ba253c9c4481c6b6bb3b8f0ea, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 3.175
+    - clipName: 01_03_44
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_44.wav
+      clipSoundData: {fileID: 8300000, guid: 51bfe16ac5907c841834649410e21437, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 3.175
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_45
+    clips:
+    - clipName: 01_03_45
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_45.wav
+      clipSoundData: {fileID: 8300000, guid: ecc3d7d83e167cd4aa6e2f67e56c5256, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 17.925
+    - clipName: 01_03_45
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_45.wav
+      clipSoundData: {fileID: 8300000, guid: 746e3fd85dd3b744f878e07f424351e6, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 17.925
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_46
+    clips:
+    - clipName: 01_03_46
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_46.wav
+      clipSoundData: {fileID: 8300000, guid: 66ac5b95259227147ba7f3ae648e7967, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 6.757125
+    - clipName: 01_03_46
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_46.wav
+      clipSoundData: {fileID: 8300000, guid: 30ad7bf39556de44eb2aedf6e4db24cf, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 6.757125
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_47
+    clips:
+    - clipName: 01_03_47
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_47.wav
+      clipSoundData: {fileID: 8300000, guid: 869540c87a195cf4e8c588edac90b03a, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 3.1125
+    - clipName: 01_03_47
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_47.wav
+      clipSoundData: {fileID: 8300000, guid: b9daf30de66852d4c98b4d66dec661d3, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 3.1125
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_48
+    clips:
+    - clipName: 01_03_48
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_48.wav
+      clipSoundData: {fileID: 8300000, guid: a547b731ecd23e04f912e71da2125ad8, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 2.7875
+    - clipName: 01_03_48
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_48.wav
+      clipSoundData: {fileID: 8300000, guid: 3a0eda9dbe140104bbc693dc8d9bd20a, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 2.7875
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_49
+    clips:
+    - clipName: 01_03_49
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_49.wav
+      clipSoundData: {fileID: 8300000, guid: f2d167826359a144795e437df4ca6926, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 4.3625
+    - clipName: 01_03_49
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_49.wav
+      clipSoundData: {fileID: 8300000, guid: 38cbfb2cce11a0644a42146a2f66e20a, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 4.3625
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_50
+    clips:
+    - clipName: 01_03_50
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_50.wav
+      clipSoundData: {fileID: 8300000, guid: 69bca2b8fe99366478d95c4df2bf80f8, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 3.1125
+    - clipName: 01_03_50
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_50.wav
+      clipSoundData: {fileID: 8300000, guid: 7c08534e508ffbc468d980cb357c267d, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 3.1125
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_51
+    clips:
+    - clipName: 01_03_51
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_51.wav
+      clipSoundData: {fileID: 8300000, guid: b37443f90781f4047a156996ce930df4, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 2.9625
+    - clipName: 01_03_51
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_51.wav
+      clipSoundData: {fileID: 8300000, guid: fafcf56c8d6bc0a488f45f2a2a22d5da, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 2.9625
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_52
+    clips:
+    - clipName: 01_03_52
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_52.wav
+      clipSoundData: {fileID: 8300000, guid: ee9cad84bb540b343a75ea87a77789b4, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 5.4375
+    - clipName: 01_03_52
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_52.wav
+      clipSoundData: {fileID: 8300000, guid: acda91e0065aecc43b6a43f2aad3e12a, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 5.4375
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_54
+    clips:
+    - clipName: 01_03_54
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_54.wav
+      clipSoundData: {fileID: 8300000, guid: 288bc861fa3693f4cbc651fd4af55d00, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 4.675
+    - clipName: 01_03_54
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_54.wav
+      clipSoundData: {fileID: 8300000, guid: 94dd969f4d77a4542810ad8d359889e4, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 4.675
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_55
+    clips:
+    - clipName: 01_03_55
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_55.wav
+      clipSoundData: {fileID: 8300000, guid: bd45baf4a073ad74bb9d8ac6c40408a6, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 2.0125
+    - clipName: 01_03_55
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_55.wav
+      clipSoundData: {fileID: 8300000, guid: e0543c5ba99e3ce4e9943e088a529bc7, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 2.0125
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_56
+    clips:
+    - clipName: 01_03_56
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_56.wav
+      clipSoundData: {fileID: 8300000, guid: a87239b3c7f29ee4092bd3e2418244e8, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 1.4125
+    - clipName: 01_03_56
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_56.wav
+      clipSoundData: {fileID: 8300000, guid: d7123acfa5654a140b7f02ab20a2095c, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 1.4125
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_57
+    clips:
+    - clipName: 01_03_57
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_57.wav
+      clipSoundData: {fileID: 8300000, guid: 21df9354019ba694ebdc013af77b31d5, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 2.55
+    - clipName: 01_03_57
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_57.wav
+      clipSoundData: {fileID: 8300000, guid: 4a923db3c21409b4ba28bd456524d512, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 2.55
+    isNeverBreak: 0
+    clipDepth: 1
+  - clipName: 01_03_58
+    clips:
+    - clipName: 01_03_58
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/en/01_03_58.wav
+      clipSoundData: {fileID: 8300000, guid: e1ce17465590a194bab0d7b7645669af, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 8.1375
+    - clipName: 01_03_58
+      clipSoundUrl: Assets/Resoucres/Audio/Clip/sub_1/zh_cn/01_03_58.wav
+      clipSoundData: {fileID: 8300000, guid: 3f685787dda361a4a8dc81ec32056fdf, type: 3}
+      clipCD: -1
+      clipVolume: 1
+      clipLenght: 8.1375
+    isNeverBreak: 0
+    clipDepth: 1

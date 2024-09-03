@@ -1,0 +1,10 @@
+﻿
+
+namespace GeneratedConstants
+{
+    public static class MethodNames
+    {
+
+        public static readonly string ty = "er";
+    }
+}

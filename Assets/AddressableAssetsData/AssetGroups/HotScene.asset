@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: HotScene
+  m_EditorClassIdentifier: 
+  m_GroupName: HotScene
+  m_Data:
+    m_SerializedData: []
+  m_GUID: f1033bbdde23a6e488e1324d68e8f367
+  m_SerializeEntries:
+  - m_GUID: 49829ad9dabf4bf4796beb42b2ecb2fe
+    m_Address: Assets/Scenes/hotfix
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: f5ffd05cb322c6d4ab4d98b7896cb194, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: a4978bd74d2a4b145bd06e40e430975e, type: 2}
+    - {fileID: 11400000, guid: 19da8f5fbdbb5c744b6c0970faf8776d, type: 2}

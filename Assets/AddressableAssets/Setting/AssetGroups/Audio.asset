@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a277cd167bd3754448438d796e080ceb, type: 3}
+  m_Name: Audio
+  m_EditorClassIdentifier: 
+  main: {fileID: 102900000, guid: b55033a7c5f81de43abde05c32bea861, type: 3}
+  groupName: Audio
+  addressType: 0
+  isSampleName: 1
+  isAutoNotName: 0
+  fifterSuffixs: []
+  labels:
+  - labelName: default
+    main: {fileID: 102900000, guid: b55033a7c5f81de43abde05c32bea861, type: 3}
+    entryInfos: []
+  - labelName: sound
+    main: {fileID: 102900000, guid: 826b0e169864b9946ba10670164f018a, type: 3}
+    entryInfos:
+    - address: sound
+      addressPath: Assets/AddressableAssets/Asset/Remoted/(Group)Audio/(Label)sound/sound.asset
+  - labelName: subtitle
+    main: {fileID: 102900000, guid: 190aedc3024b92d4d9ce131b0d2e9c8e, type: 3}
+    entryInfos:
+    - address: subtitle
+      addressPath: Assets/AddressableAssets/Asset/Remoted/(Group)Audio/(Label)subtitle/subtitle.asset

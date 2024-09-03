@@ -1,0 +1,19 @@
+{
+    "name": "Audio.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:2845e9d435533134a800377287af34e3",
+        "GUID:710e77c62cf942c448a81d60ddfbdeda"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

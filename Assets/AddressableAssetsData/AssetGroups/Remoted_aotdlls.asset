@@ -1,0 +1,385 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Remoted_aotdlls
+  m_EditorClassIdentifier: 
+  m_GroupName: Remoted_aotdlls
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 01abdca8fa4e7bb4382b62aaf63100f3
+  m_SerializeEntries:
+  - m_GUID: 632da89a70d9b3e4684befb98bfe6e91
+    m_Address: Assembly-CSharp-firstpass.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0c51de6ea36342b43937e12f9fe32a48
+    m_Address: HybridCLR.Runtime.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6cc6d90122486db4d93697ea98887ee1
+    m_Address: JsonUI.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 508c7c06af8f1e941be873e089692c38
+    m_Address: kcp2k.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bf6ffd9c966ae014584455d66c54ad23
+    m_Address: LrFramework.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 759ab0865e9eb7844a2c44dffcc4508a
+    m_Address: Main.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f3f448e47d82a22458ae8b22cb4083d6
+    m_Address: Mono.Security.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c7d6f36e0aee6d8448a0528edaba9375
+    m_Address: mscorlib.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ed3455155fddc9148b0b7822fb35808d
+    m_Address: PoolType.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 181af1ce5f471e241832e62a8f678b3a
+    m_Address: protobuf-net.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9d0ea0606f3fe7747ac7ac3a972079c6
+    m_Address: System.Configuration.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1be5bd92204599b4cb65e9904403669d
+    m_Address: System.Core.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a7f8d8dd3f573b543bbfc1cd8fc22801
+    m_Address: System.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 58bbce5d1abf1634a95f9857371def17
+    m_Address: System.Numerics.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 09a8038474a16f2499908c919fb3d1aa
+    m_Address: System.Xml.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 06d904b1504ac7c419ad208041894623
+    m_Address: Telepathy.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 08b2aba61f28c3b4aa177ebd8d8dd849
+    m_Address: UniRx.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b6406cd3bb436e941ae395422464d0bf
+    m_Address: Unity.Addressables.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dd3cae91da305ed439987d67485cbb22
+    m_Address: Unity.ResourceManager.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c24913bdc03d29e41bf1bda238844f3f
+    m_Address: UnityEngine.AIModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a80a6920da1da4f4984ca53736581edf
+    m_Address: UnityEngine.AndroidJNIModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 29c3723a3c434d347b4d6e7c9e717542
+    m_Address: UnityEngine.AnimationModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 61ee50e7a7aca8f4488275b11f980e70
+    m_Address: UnityEngine.AssetBundleModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 57f552e59d3871c4a83fbcfa196c8120
+    m_Address: UnityEngine.AudioModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fa237c42c189d734998ca2b50e9f12d4
+    m_Address: UnityEngine.CoreModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b30d745b8eee9064bbd827b9b81a227f
+    m_Address: UnityEngine.DirectorModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bcd2f0fb4dfe1274e95ac45b56deddac
+    m_Address: UnityEngine.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dc9553c3ce2d5714caaa3a993cd03948
+    m_Address: UnityEngine.GridModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e3bdbfd858571b549b1c6c7871894071
+    m_Address: UnityEngine.IMGUIModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dcb019f66ea079242b143750bf57c558
+    m_Address: UnityEngine.InputLegacyModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e7b217e180fc1704b91a5fd40095efab
+    m_Address: UnityEngine.InputModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9dca8ab7be40d5540beaaf2fd179561d
+    m_Address: UnityEngine.JSONSerializeModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 934bb9e6bb27a9244957b92d147a38b7
+    m_Address: UnityEngine.ParticleSystemModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4470f7e165f041a408f1847d059cb3e7
+    m_Address: UnityEngine.Physics2DModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fc26c8472a214674e8b8d0ae6335da26
+    m_Address: UnityEngine.PhysicsModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fffe70aec2b21164a95cab8f31be250f
+    m_Address: UnityEngine.SharedInternalsModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d21d5f165a4d76d4a990ac7e9474fefd
+    m_Address: UnityEngine.SpriteShapeModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 95f37b5b439a7e04ba1fa07f8a7c6906
+    m_Address: UnityEngine.SubsystemsModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d00f5c55f7f290a43b097c738490a9e7
+    m_Address: UnityEngine.TerrainModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 06e90d73cc94ee04f862d7fe4f1874cb
+    m_Address: UnityEngine.TextCoreFontEngineModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cd52c39dc34b4c648a0ccb0afa088c6f
+    m_Address: UnityEngine.TextCoreTextEngineModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bb08e557837009a4c8ec30f83d9120e7
+    m_Address: UnityEngine.TextRenderingModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e9fd78cac4b021a4f8ecb6a3f22b2649
+    m_Address: UnityEngine.TilemapModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 73dbc1f992ed1c942b95dde127b342a1
+    m_Address: UnityEngine.UI.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4658868801b11c9409139aaf5a125eaf
+    m_Address: UnityEngine.UIElementsModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1b9ab75ae47a84d4dab490f566f28799
+    m_Address: UnityEngine.UIElementsNativeModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0ff124e82a0b3344e802d0b53f38bf35
+    m_Address: UnityEngine.UIModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f9b88dbc83b399848acc20d40d7a26a3
+    m_Address: UnityEngine.UnityAnalyticsModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1958ad692c1e2824bb3c6c351513b9ae
+    m_Address: UnityEngine.UnityWebRequestAssetBundleModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 038500a2218729b4fa3c50c56906d5dd
+    m_Address: UnityEngine.UnityWebRequestModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 47f8ba588e5adee45bafd4eeadf2cc61
+    m_Address: UnityEngine.UnityWebRequestWWWModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4d588b42fb41a764c84889c335f1e356
+    m_Address: UnityEngine.VFXModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0dece2f83b78d724f99a68cb4bf2c9c8
+    m_Address: UnityEngine.VideoModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 241cdefbc596b434f93684ff0db9263f
+    m_Address: UnityEngine.VRModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8a283e7ffc0796c429fab7b616139cae
+    m_Address: UnityEngine.XRModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 84fecf284513f334796ce768a4db7ec0
+    m_Address: where-allocations.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9880312474f89054cb4584f363de41c4
+    m_Address: Microsoft.CSharp.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f67193e706f491949a96282ad6dc2a62
+    m_Address: Unity.InputSystem.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 79d1d852881608d48bcd9d751ff159e3
+    m_Address: Unity.Profiling.Core.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 87afccf7dc0efb743bab5ba643d155ed
+    m_Address: UnityEngine.PropertiesModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AotDll
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: f5ffd05cb322c6d4ab4d98b7896cb194, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: fbc4b11a9be4f8f4eb913b6231cb7ed9, type: 2}
+    - {fileID: 11400000, guid: f2b887db7d69cb74a860926b3206f66d, type: 2}

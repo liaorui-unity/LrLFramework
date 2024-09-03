@@ -1,0 +1,262 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29e768d1f6b820444bcb0925a0217fbe, type: 3}
+  m_Name: sound
+  m_EditorClassIdentifier: 
+  urlPath: Assets/Resoucres/Audio/Clip/01_03
+  audioLists:
+  - clipName: 01_03_07
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_07.wav
+    clipSoundData: {fileID: 8300000, guid: 172ebe99ffc61324aacd68a2d50f89f4, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 28.825
+  - clipName: 01_03_09
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_09.wav
+    clipSoundData: {fileID: 8300000, guid: 8c5800340c6f3444fbc9008bc1edafcd, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 28.375
+  - clipName: 01_03_11
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_11.wav
+    clipSoundData: {fileID: 8300000, guid: 269b23f41c37e7e419a0607785cce33b, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 29.4875
+  - clipName: 01_03_13
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_13.wav
+    clipSoundData: {fileID: 8300000, guid: 85fbcd350d0cac44db70e59b9b83b3d5, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 15.5375
+  - clipName: 01_03_16
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_16.wav
+    clipSoundData: {fileID: 8300000, guid: 7185b9e71ee825b419032698ecdf7c13, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 6.8968124
+  - clipName: 01_03_17
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_17.wav
+    clipSoundData: {fileID: 8300000, guid: ae71570bd93049f4bb7fe7e2e624a1c6, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 3.1875
+  - clipName: 01_03_18
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_18.wav
+    clipSoundData: {fileID: 8300000, guid: 6723623f4bc5eb449a59bd7109b6a2b1, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 15.5625
+  - clipName: 01_03_19
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_19.wav
+    clipSoundData: {fileID: 8300000, guid: 04bb93c8ec7bea24eb01094f8900fa4a, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 7.85
+  - clipName: 01_03_20
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_20.wav
+    clipSoundData: {fileID: 8300000, guid: c9dbe39b8fdf8b74fb8e9e1b31d01fe3, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 3.525
+  - clipName: 01_03_21
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_21.wav
+    clipSoundData: {fileID: 8300000, guid: 091c71fa340108e4e8f4f960991554d3, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 2.325
+  - clipName: 01_03_23
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_23.wav
+    clipSoundData: {fileID: 8300000, guid: fc02c1b5c6c9fa14e8b0f149a50bae1a, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 3.0625
+  - clipName: 01_03_24
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_24.wav
+    clipSoundData: {fileID: 8300000, guid: 53aeecc60aad9814ba8b74300e3bd2ba, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 8.65
+  - clipName: 01_03_26
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_26.wav
+    clipSoundData: {fileID: 8300000, guid: b5fa89bb508082545a0f8e42145f068f, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 2.5
+  - clipName: 01_03_27
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_27.wav
+    clipSoundData: {fileID: 8300000, guid: 850623d9509a0834eba0102bb7aedb44, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 3.7625
+  - clipName: 01_03_28
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_28.wav
+    clipSoundData: {fileID: 8300000, guid: 599dd598196f10448a5b381dfb68ac01, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 2.475
+  - clipName: 01_03_30
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_30.wav
+    clipSoundData: {fileID: 8300000, guid: 6c09635407bee44478d3a72796e68926, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 20.3875
+  - clipName: 01_03_31
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_31.wav
+    clipSoundData: {fileID: 8300000, guid: 8223a542670b0304793f9619ead54bf8, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 2.15
+  - clipName: 01_03_32
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_32.wav
+    clipSoundData: {fileID: 8300000, guid: fd560631abf400a4db17cf9d34025595, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 5.7
+  - clipName: 01_03_33
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_33.wav
+    clipSoundData: {fileID: 8300000, guid: abf69ab62c022fd4880e19df5bdc8b0f, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 3.825
+  - clipName: 01_03_34
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_34.wav
+    clipSoundData: {fileID: 8300000, guid: 79a0c81376232ab49b9c171ca56bf91c, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 3.9875
+  - clipName: 01_03_35
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_35.wav
+    clipSoundData: {fileID: 8300000, guid: 22f1ab22a9ccd7e4fa219f14df7b7869, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 4.5375
+  - clipName: 01_03_36
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_36.wav
+    clipSoundData: {fileID: 8300000, guid: f49283ef7551f364fa37126e3af4e29b, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 5.7
+  - clipName: 01_03_37
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_37.wav
+    clipSoundData: {fileID: 8300000, guid: c8d717864fb889c40a3a6838c52a2a56, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 3.5
+  - clipName: 01_03_38
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_38.wav
+    clipSoundData: {fileID: 8300000, guid: ceee45e49ff501b41b47c443447c7d0f, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 8.0625
+  - clipName: 01_03_39
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_39.wav
+    clipSoundData: {fileID: 8300000, guid: bab339ccfafd6744c8b9ac52394fad15, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 2.125
+  - clipName: 01_03_40
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_40.wav
+    clipSoundData: {fileID: 8300000, guid: dbd53c560347a9d4a809deb19384393c, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 24.6875
+  - clipName: 01_03_43
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_43.wav
+    clipSoundData: {fileID: 8300000, guid: 9138221024c97e14a90206a02b8a7f5d, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 7.7125
+  - clipName: 01_03_44
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_44.wav
+    clipSoundData: {fileID: 8300000, guid: bc8c59495a6039d4b8d56d38fe8a8204, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 3.175
+  - clipName: 01_03_45
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_45.wav
+    clipSoundData: {fileID: 8300000, guid: 8afa6cb0c9b377945acd94208b5cd64f, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 17.925
+  - clipName: 01_03_46
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_46.wav
+    clipSoundData: {fileID: 8300000, guid: bcbcd72c6aa2e4c4a8a172d90b9a7777, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 6.757125
+  - clipName: 01_03_47
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_47.wav
+    clipSoundData: {fileID: 8300000, guid: 99bc32cc56a884e4c82f131be4328251, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 3.1125
+  - clipName: 01_03_48
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_48.wav
+    clipSoundData: {fileID: 8300000, guid: 93395f5734914f24280216290509ef43, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 2.7875
+  - clipName: 01_03_49
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_49.wav
+    clipSoundData: {fileID: 8300000, guid: 823896692cddd0841b7e2eee6c852d1b, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 4.3625
+  - clipName: 01_03_50
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_50.wav
+    clipSoundData: {fileID: 8300000, guid: e2f1bda30b6a3754d8fd861a2fcdc468, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 3.1125
+  - clipName: 01_03_51
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_51.wav
+    clipSoundData: {fileID: 8300000, guid: b537168e8da2252438ec30eefd99ce73, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 2.9625
+  - clipName: 01_03_52
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_52.wav
+    clipSoundData: {fileID: 8300000, guid: 7bad8c4273045214291f59cb2ca15d75, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 5.4375
+  - clipName: 01_03_54
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_54.wav
+    clipSoundData: {fileID: 8300000, guid: eecf05a1b1de76e49a3f1c7995aacb51, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 4.675
+  - clipName: 01_03_55
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_55.wav
+    clipSoundData: {fileID: 8300000, guid: 13672746f362e6e409955c7cc471e763, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 2.0125
+  - clipName: 01_03_56
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_56.wav
+    clipSoundData: {fileID: 8300000, guid: 8cc7b948a9f7cc94d91967781577a4bc, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 1.4125
+  - clipName: 01_03_57
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_57.wav
+    clipSoundData: {fileID: 8300000, guid: bb723524df7ed2b4283190849f4652fe, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 2.55
+  - clipName: 01_03_58
+    clipSoundUrl: Assets/Resoucres/Audio/Clip/01_03/01_03_58.wav
+    clipSoundData: {fileID: 8300000, guid: 87842919f387b6c4e9e96f378a525dfd, type: 3}
+    clipCD: -1
+    clipVolume: 1
+    clipLenght: 8.1375

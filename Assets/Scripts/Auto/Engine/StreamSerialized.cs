@@ -1,7 +1,7 @@
 using UnityEngine;
-public class StreamSerialized : ScriptableObject
-{
+     public class StreamSerialized : ScriptableObject
+     {
+          public Tr Tr;
+//Add fields here
 
-     //Add fields here
-
-}
+     }

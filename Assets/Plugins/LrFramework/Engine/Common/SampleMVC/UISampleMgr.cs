@@ -7,6 +7,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using LogInfo;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -85,7 +86,7 @@ namespace Sailfish
                     this.AddLoaderInfo(ui_attr);
                 }
             }
-            Debuger.Log("UIManager:ExtractAttribute 提取特性用时:" + (Time.realtimeSinceStartup - start_time));
+            Info.Log("UIManager:ExtractAttribute 提取特性用时:" + (Time.realtimeSinceStartup - start_time));
         }
 
         #endregion

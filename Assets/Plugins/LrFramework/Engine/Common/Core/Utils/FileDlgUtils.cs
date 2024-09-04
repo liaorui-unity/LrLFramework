@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using LogInfo;
 using UnityEngine;
 
 namespace Table
@@ -75,7 +76,7 @@ namespace Table
             if (OpenFileDialog.GetOpenFileName(pth))
             {
                 string filepath = pth.file;//选择的文件路径;  
-                Debuger.Log(filepath);
+                Info.Log(filepath);
                 return filepath;
             }
             else
@@ -103,7 +104,7 @@ namespace Table
             if (SaveFileDialog.GetSaveFileName(pth))
             {
                 string filepath = pth.file;//选择的文件路径;  
-                Debuger.Log(filepath);
+                Info.Log(filepath);
                 return filepath;
             }
             else

@@ -10,7 +10,6 @@ public class MainStep : MonoBehaviour
 {
     private void Awake()
     {
-        Debuger.Log("=======启动流程逻辑=======");
         DontDestroyOnLoad(this.gameObject);
         StartFlow();
     }

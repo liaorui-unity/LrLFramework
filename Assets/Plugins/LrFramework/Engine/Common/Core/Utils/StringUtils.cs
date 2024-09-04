@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System;
+using LogInfo;
 
 
 namespace Table
@@ -107,7 +108,7 @@ namespace Table
             }
             else
             {
-                Debuger.LogError("Split : type error:" + typeof(T));
+                Info.LogError("Split : type error:" + typeof(T));
             }
 
             return tmpList;
@@ -134,7 +135,7 @@ namespace Table
                 string[] arrKeyValue = strKeyValue.Split(split_key);
                 if (arrKeyValue.Length != 2)
                 {
-                    Debuger.LogError("字符串格式错误:" + str);
+                    Info.LogError("字符串格式错误:" + str);
                     continue;
                 }
                 T key = StringUtils.Convert<T>(arrKeyValue[0]);
@@ -173,7 +174,7 @@ namespace Table
             string[] arrKeyValue = str.Split(split_key);
             if (arrKeyValue.Length != 2)
             {
-                Debuger.LogError("字符串格式错误:" + str);
+                Info.LogError("字符串格式错误:" + str);
                 return default(KeyValuePair<T, K>);
             }
             T key = StringUtils.Convert<T>(arrKeyValue[0]);
@@ -189,7 +190,7 @@ namespace Table
             byte v = 0;
             if (byte.TryParse(str, out v))
                 return v;
-            Debuger.LogWarning("ToByte类型转化失败:" + str);
+            Info.LogWarning("ToByte类型转化失败:" + str);
             return 0;
         }
         public static short ToShort(this string str)
@@ -197,7 +198,7 @@ namespace Table
             short v = 0;
             if (short.TryParse(str, out v))
                 return v;
-            Debuger.LogWarning("ToShort类型转化失败:" + str);
+            Info.LogWarning("ToShort类型转化失败:" + str);
             return 0;
         }
         public static ushort ToUShort(this string str)
@@ -205,7 +206,7 @@ namespace Table
             ushort v = 0;
             if (ushort.TryParse(str, out v))
                 return v;
-            Debuger.LogWarning("ToUShort类型转化失败:" + str);
+            Info.LogWarning("ToUShort类型转化失败:" + str);
             return 0;
         }
         public static int ToInt(this string str)
@@ -213,7 +214,7 @@ namespace Table
             int v = 0;
             if (int.TryParse(str, out v))
                 return v;
-            Debuger.LogWarning("ToInt类型转化失败:" + str);
+            Info.LogWarning("ToInt类型转化失败:" + str);
             return 0;
         }
         public static uint ToUInt(this string str)
@@ -221,7 +222,7 @@ namespace Table
             uint v = 0;
             if (uint.TryParse(str, out v))
                 return v;
-            Debuger.LogWarning("ToUInt类型转化失败:" + str);
+            Info.LogWarning("ToUInt类型转化失败:" + str);
             return 0;
         }
         public static long ToLong(this string str)
@@ -229,7 +230,7 @@ namespace Table
             long v = 0;
             if (long.TryParse(str, out v))
                 return v;
-            Debuger.LogWarning("ToLong:" + str);
+            Info.LogWarning("ToLong:" + str);
             return 0;
         }
         public static ulong ToULong(this string str)
@@ -237,7 +238,7 @@ namespace Table
             ulong v = 0;
             if (ulong.TryParse(str, out v))
                 return v;
-            Debuger.LogWarning("ToULong类型转化失败:" + str);
+            Info.LogWarning("ToULong类型转化失败:" + str);
             return 0;
         }
         public static float ToFloat(this string str)
@@ -245,7 +246,7 @@ namespace Table
             float v = 0;
             if (float.TryParse(str, out v))
                 return v;
-            Debuger.LogWarning("ToFloat类型转化失败:" + str);
+            Info.LogWarning("ToFloat类型转化失败:" + str);
             return 0;
         }
         public static double ToDouble(this string str)
@@ -253,7 +254,7 @@ namespace Table
             double v = 0;
             if (double.TryParse(str, out v))
                 return v;
-            Debuger.LogWarning("ToDouble类型转化失败:" + str);
+            Info.LogWarning("ToDouble类型转化失败:" + str);
             return 0;
         }
         /// <summary>
@@ -311,13 +312,13 @@ namespace Table
                 }
                 else
                 {
-                    Debuger.LogError("StringConvert : type error:" + fieldType);
+                    Info.LogError("StringConvert : type error:" + fieldType);
                     value = default(T);
                 }
             }
             catch (Exception e)
             {
-                Debuger.LogError("StringConvert : type error:" + e.ToString());
+                Info.LogError("StringConvert : type error:" + e.ToString());
                 value = default(T);
             }
             return (T)value;
@@ -368,7 +369,7 @@ namespace Table
             }
             else
             {
-                Debuger.LogError("StringConvert : Convert : type error:" + fieldType);
+                Info.LogError("StringConvert : Convert : type error:" + fieldType);
                 return null;
             }
         }

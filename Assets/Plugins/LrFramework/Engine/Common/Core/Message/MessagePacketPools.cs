@@ -4,6 +4,7 @@
 // 描述：工具人
 // 创建时间：#CreateTime#
 //=======================================================
+using LogInfo;
 using Sailfish;
 using System;
 using System.Collections.Generic;
@@ -66,13 +67,13 @@ namespace NET
                     MessagePacketInfo packet_info = GetPacketInfo(id);
                     if (packet_info == null)
                     {
-                        Debuger.LogError("PacketPools - 没有找到协议对应的类信息，请在类{0}添加特性PacketAttribute");
+                        Info.LogError("PacketPools - 没有找到协议对应的类信息，请在类{0}添加特性PacketAttribute");
                         return null;
                     }
                     packet = (MessageInfo)Activator.CreateInstance(packet_info.Type, true);
                     if (packet == null)
                     {
-                        Debuger.LogError("PacketPools - 创建协议失败:" + packet_info.Type.ToString());
+                        Info.LogError("PacketPools - 创建协议失败:" + packet_info.Type.ToString());
                         return null;
                     }
 #if DEBUG
@@ -118,13 +119,13 @@ namespace NET
                     MessagePacketInfo packet_info = GetPacketInfo(id);
                     if (packet_info == null)
                     {
-                        Debuger.LogError("PacketPools - 没有找到协议对应的类信息，请在类{0}添加特性PacketAttribute");
+                        Info.LogError("PacketPools - 没有找到协议对应的类信息，请在类{0}添加特性PacketAttribute");
                         return default(T);
                     }
                     packet = (T)Activator.CreateInstance(packet_info.Type, true);
                     if (packet == null)
                     {
-                        Debuger.LogError("PacketPools - 创建协议失败:" + packet_info.Type.ToString());
+                        Info.LogError("PacketPools - 创建协议失败:" + packet_info.Type.ToString());
                         return default(T);
                     }
 #if DEBUG
@@ -172,7 +173,7 @@ namespace NET
                 }
                 st.AppendLine(one_line);
             }
-            if (is_print) Debuger.Log(st.ToString());
+            if (is_print) Info.Log(st.ToString());
             return st.ToString();
 #else
             return string.Empty;
@@ -184,7 +185,7 @@ namespace NET
         {
             if (m_packet_infos.ContainsKey(info.Id))
             {
-                Debuger.LogError("PacketPools::AddPacketInfo - same id is register:" + info.Id.ToString());
+                Info.LogError("PacketPools::AddPacketInfo - same id is register:" + info.Id.ToString());
                 return;
             }
 

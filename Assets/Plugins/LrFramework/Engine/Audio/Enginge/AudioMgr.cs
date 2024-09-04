@@ -8,6 +8,7 @@ using System.Xml;
 using UnityEngine;
 using UnityEngine.Events;
 using Audio;
+using LogInfo;
 
 public class CallValue<T>
 {
@@ -168,7 +169,7 @@ public class AudioMgr : MonoBehaviour
         }
         catch (System.Exception e)
         {
-            Debuger.Log(string.Format("音频报错,{0}, 原因:{1}", clipName, e.ToString()));
+            Info.Log(string.Format("音频报错,{0}, 原因:{1}", clipName, e.ToString()));
         }
     }
 
@@ -193,7 +194,7 @@ public class AudioMgr : MonoBehaviour
         }
         catch (System.Exception e)
         {
-            Debuger.Log(string.Format("音频报错,{0}, 原因:{1}", clipNames[0], e.ToString()));
+            Info.Log(string.Format("音频报错,{0}, 原因:{1}", clipNames[0], e.ToString()));
         }
     }
 
@@ -218,7 +219,7 @@ public class AudioMgr : MonoBehaviour
         }
         catch (System.Exception e)
         {
-            Debuger.Log(string.Format("音频报错,{0}, 原因:{1}", clipName, e.ToString()));
+            Info.Log(string.Format("音频报错,{0}, 原因:{1}", clipName, e.ToString()));
         }
     }
 
@@ -244,7 +245,7 @@ public class AudioMgr : MonoBehaviour
         }
         catch (System.Exception e)
         {
-            Debuger.Log(string.Format("音频报错,{0}, 原因:{1}", clipNames[0], e.ToString()));
+            Info.Log(string.Format("音频报错,{0}, 原因:{1}", clipNames[0], e.ToString()));
         }
     }
 
@@ -269,7 +270,7 @@ public class AudioMgr : MonoBehaviour
         }
         catch (System.Exception e)
         {
-            Debuger.Log(string.Format("音频报错,{0}, 原因:{1}", clipName, e.ToString()));
+            Info.Log(string.Format("音频报错,{0}, 原因:{1}", clipName, e.ToString()));
         }
     }
 
@@ -290,7 +291,7 @@ public class AudioMgr : MonoBehaviour
         }
         catch (System.Exception e)
         {
-            Debuger.Log(string.Format("音频报错,{0}, 原因:{1}", clipName, e.ToString()));
+            Info.Log(string.Format("音频报错,{0}, 原因:{1}", clipName, e.ToString()));
         }
     }
 
@@ -481,7 +482,7 @@ public class AudioMgr : MonoBehaviour
             }
             yield return 0;
         }
-        Debuger.Log("音频加载完毕！");
+        Info.Log("音频加载完毕！");
     }
 
     #endregion

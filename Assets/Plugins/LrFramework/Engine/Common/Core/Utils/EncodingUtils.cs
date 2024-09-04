@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Text;
 using System;
+using LogInfo;
 
 namespace Table
 {
@@ -58,7 +59,7 @@ namespace Table
             }
             catch (Exception e)
             {
-                Debuger.LogError("转换失败:" + e.ToString());
+                Info.LogError("转换失败:" + e.ToString());
                 return string.Empty;
             }
         }

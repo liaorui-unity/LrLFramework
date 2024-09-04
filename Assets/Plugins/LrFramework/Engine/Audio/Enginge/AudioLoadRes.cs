@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.AddressableAssets;
+using LogInfo;
 
 namespace Audio
 {
@@ -56,7 +57,7 @@ namespace Audio
             var groupData = OnGetAudioLoadInfo(group);
             if (groupData == null)
             {
-                Debuger.LogError($"音频组 {group} 未配置");
+                Info.LogError($"音频组 {group} 未配置");
                 return;
             }
 
@@ -125,7 +126,7 @@ namespace Audio
                 var ab = await AssetBundle.LoadFromFileAsync(item.path);
                 if (ab == null)
                 {
-                    Debuger.LogError($"音频组 {loadData.group} 未加载成功");
+                    Info.LogError($"音频组 {loadData.group} 未加载成功");
                     return;
                 }
 
@@ -151,7 +152,7 @@ namespace Audio
             {
                 if (audio == null)
                 {
-                    Debuger.LogError($"音效配置文件SoundAsset {audio.clipName} 为空");
+                    Info.LogError($"音效配置文件SoundAsset {audio.clipName} 为空");
                     continue;
                 }
                 AudioMgr.soundClips.Add(audio.clipName, audio);
@@ -167,7 +168,7 @@ namespace Audio
             {
                 if (audio == null)
                 {
-                    Debuger.LogError($"字幕音效配置文件SubtitleAsset {audio.clipName} 为空");
+                    Info.LogError($"字幕音效配置文件SubtitleAsset {audio.clipName} 为空");
                     continue;
                 }
 

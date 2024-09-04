@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Runtime.InteropServices;
 using System;
+using LogInfo;
 
 namespace Table
 {
@@ -137,7 +138,7 @@ namespace Table
             }
             catch (System.Exception e)
             {
-                Debuger.LogError(e.ToString());
+                Info.LogError(e.ToString());
                 return null;
             }
         }

@@ -207,13 +207,19 @@ public class AssetCacheWindow : EditorWindow
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
             //保存按钮
-            if (GUILayout.Button("Save", GUILayout.Width(100)))
+            if (GUILayout.Button("保存", GUILayout.Width(100)))
             {
                 cacheData.txtFitters   = txtFitters;
                 cacheData.bytesFitters = bytesFitters;
-                
+
                 File.WriteAllText(cachePath, JsonUtility.ToJson(cacheData));
             }
+
+            if (GUILayout.Button("Create", GUILayout.Width(100)))
+            {
+                AssetCacheProsser.CreateLinker();
+            }
+
             GUILayout.FlexibleSpace();
             GUILayout.EndHorizontal();
         });

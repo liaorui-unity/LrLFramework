@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using System.Xml;
 using System;
+using LogInfo;
 
 namespace Table
 {
@@ -87,7 +88,7 @@ namespace Table
                 string dstFile = dstDir + file.Name;
                 if (srcFile.Contains(".xml"))
                 {
-                    Debuger.Log("srcFile:" + srcFile + " dstFile:" + dstFile);
+                    Info.Log("srcFile:" + srcFile + " dstFile:" + dstFile);
                     File.Copy(srcFile, dstFile, true);
                 }
             }
@@ -106,7 +107,7 @@ namespace Table
 
             if (!dir.Exists)
             {
-                Debuger.LogError("Source directory does not exist or could not be found: "+ sourceDirName);
+                Info.LogError("Source directory does not exist or could not be found: "+ sourceDirName);
             }
 
             // If the destination directory doesn't exist, create it. 
@@ -155,7 +156,7 @@ namespace Table
                 }
                 catch (Exception e)
                 {
-                    Debuger.LogException(e);
+                    Info.LogException(e);
                 }
                 finally
                 {
@@ -186,7 +187,7 @@ namespace Table
                 }
                 catch (Exception e)
                 {
-                    Debuger.LogException(e);
+                    Info.LogException(e);
                 }
                 finally
                 {
@@ -207,12 +208,12 @@ namespace Table
         {
             if (string.IsNullOrEmpty(path))
             {
-                Debuger.LogWarning("路径错误");
+                Info.LogWarning("路径错误");
                 return string.Empty;
             }
             if (!File.Exists(path))
             {
-                Debuger.LogWarning("未找到文件:" + path);
+                Info.LogWarning("未找到文件:" + path);
                 return string.Empty;
             }
             try
@@ -221,7 +222,7 @@ namespace Table
             }
             catch(System.Exception e)
             {
-                Debuger.LogException(e);
+                Info.LogException(e);
                 return string.Empty;
             }
         }
@@ -235,7 +236,7 @@ namespace Table
         {
             if (string.IsNullOrEmpty(path))
             {
-                Debuger.LogWarning("路径错误");
+                Info.LogWarning("路径错误");
                 return;
             }
             string folder = Path.GetDirectoryName(path);
@@ -264,7 +265,7 @@ namespace Table
             }
             catch (Exception ex)
             {
-                Debuger.LogException(ex);
+                Info.LogException(ex);
             }
             finally
             {
@@ -283,12 +284,12 @@ namespace Table
         {
             if (string.IsNullOrEmpty(path))
             {
-                Debuger.LogWarning("路径错误");
+                Info.LogWarning("路径错误");
                 return null;
             }
             if (!File.Exists(path))
             {
-                Debuger.LogWarning("未找到文件:" + path);
+                Info.LogWarning("未找到文件:" + path);
                 return null;
             }
             try
@@ -297,7 +298,7 @@ namespace Table
             }
             catch (System.Exception e)
             {
-                Debuger.LogException(e);
+                Info.LogException(e);
                 return null;
             }
         }
@@ -310,7 +311,7 @@ namespace Table
         {
             if (string.IsNullOrEmpty(path))
             {
-                Debuger.LogWarning("路径错误");
+                Info.LogWarning("路径错误");
                 return;
             }
 
@@ -328,7 +329,7 @@ namespace Table
             }
             catch (System.Exception e)
             {
-                Debuger.LogException(e);
+                Info.LogException(e);
             }
             finally
             {
@@ -363,7 +364,7 @@ namespace Table
                     num++;
                     if (num >= 3)
                     {
-                        Debuger.LogException(e);
+                        Info.LogException(e);
                         result = false;
                         break;
                     }
@@ -389,7 +390,7 @@ namespace Table
             }
             catch (Exception ex)
             {
-                Debuger.LogException(ex);
+                Info.LogException(ex);
             }
             return string.Empty;
         }
@@ -401,7 +402,7 @@ namespace Table
             }
             catch (Exception ex)
             {
-                Debuger.LogException(ex);
+                Info.LogException(ex);
             }
             return content;
         }
@@ -413,7 +414,7 @@ namespace Table
             }
             catch (Exception ex)
             {
-                Debuger.LogException(ex);
+                Info.LogException(ex);
             }
             return string.Empty;
         }
@@ -436,7 +437,7 @@ namespace Table
             }
             catch(System.Exception e)
             {
-                Debuger.LogException(e);
+                Info.LogException(e);
                 return 0;
             }
         }

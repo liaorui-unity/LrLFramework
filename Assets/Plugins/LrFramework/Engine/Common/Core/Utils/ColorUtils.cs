@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System;
 using System.Text.RegularExpressions;
+using LogInfo;
 
 namespace Table
 {
@@ -70,7 +71,7 @@ namespace Table
             if (color.Length != 8)
             {
                 r = g = b = a = 255;
-                Debuger.LogError("ColorUtils::GetRGBA - color error:" + color);
+                Info.LogError("ColorUtils::GetRGBA - color error:" + color);
                 return;
             }
             string str = color.Substring(0, 2);

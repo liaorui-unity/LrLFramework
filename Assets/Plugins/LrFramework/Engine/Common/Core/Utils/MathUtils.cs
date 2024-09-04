@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using LogInfo;
 
 namespace Table
 {
@@ -64,7 +65,7 @@ namespace Table
         {
             if (arr.Length == 0)
             {
-                Debuger.LogError("容器数量为空");
+                Info.LogError("容器数量为空");
                 return default(T);
             }
             T loc = arr[RandRange_Int(0, arr.Length)];
@@ -78,7 +79,7 @@ namespace Table
         {
             if (arr.Count == 0)
             {
-                Debuger.LogError("错误的参数");
+                Info.LogError("错误的参数");
                 return default(T);
             }
             T loc = arr[RandRange_Int(0, arr.Count)];

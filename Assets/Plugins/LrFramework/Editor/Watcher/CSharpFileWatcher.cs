@@ -12,9 +12,13 @@ public class CSharpFileWatcher
     private static List<string>       m_CSharpFiles = new List<string>();
     private static List<ICSharpFlie>  m_CSharpClass = new List<ICSharpFlie>();
     public static UnityAction<string ,string > ChangeFunc;
-
     private static double runtime = 0.2f;
 
+    private static List<string> fitterFolders = new List<string>()
+    {
+        "Scripts\\Auto",
+        "Assets\\Plugins",
+    };
 
     [InitializeOnLoadMethod]
     public static void PlayWatcher()
@@ -96,6 +100,11 @@ public class CSharpFileWatcher
 
     private static void OnChanged(object source, FileSystemEventArgs e)
     {
+        if (fitterFolders.Any(_ => e.FullPath.Contains(_)))
+        { 
+            return;
+        }
+
         if (CheakConfig.Instance.data.IsWriteLog)
             Debug.Log($"File: {e.FullPath} {e.ChangeType}");
 
@@ -107,6 +116,11 @@ public class CSharpFileWatcher
 
     private static void OnRenamed(object source, RenamedEventArgs e)
     {
+        if (fitterFolders.Any(_ => e.FullPath.Contains(_)))
+        {
+            return;
+        }
+
         if (CheakConfig.Instance.data.IsWriteLog)
             Debug.Log($"File renamed: {e.OldFullPath} to {e.FullPath}");
 

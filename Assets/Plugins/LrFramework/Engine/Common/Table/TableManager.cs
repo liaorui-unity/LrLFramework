@@ -7,6 +7,7 @@ using ProtoBuf;
 using System;
 using System.Linq;
 using UnityEngine.Events;
+using LogInfo;
 
 namespace Table
 {
@@ -20,7 +21,7 @@ namespace Table
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         static void Init()
         {
-            Debuger.Log("实例化："+TableManager.instance.ToString());
+            Info.Log("实例化："+TableManager.instance.ToString());
         }
 
         /// <summary>
@@ -98,7 +99,7 @@ namespace Table
             runTimeType = type;
             string name = typeof(T).Name;
 
-            Debuger.Log("加载配置表:" + name);
+            Info.Log("加载配置表:" + name);
 
             try
             {

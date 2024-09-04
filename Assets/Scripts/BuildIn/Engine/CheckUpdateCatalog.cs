@@ -55,7 +55,7 @@ public class CheckUpdateCatalog :MonoBehaviour
             foreach (var item in loc.Keys)
             {
                 var downloadsize = await Addressables.GetDownloadSizeAsync(item).Task;
-                if (downloadsize > 0)  needMaps.Add(item.ToString());
+                if (downloadsize > 0)    needMaps.Add(item.ToString());
             }
 
 
@@ -67,7 +67,6 @@ public class CheckUpdateCatalog :MonoBehaviour
                 Debug.Log($"下载数据大小：{ updateGUI.size}");
                 if (await updateGUI.waitSelect)
                 {
-                    //await AsyncDownAssetImpl(updates.Result);
                     await StartCoroutine(IEDownAssetImpl(updateResults));
                 }
             }
@@ -79,28 +78,24 @@ public class CheckUpdateCatalog :MonoBehaviour
         Debug.Log("download result Count: "+ needMaps.Count);
         if (needMaps.Count > 0)
         {
-            //var updateResult = Addressables.UpdateCatalogs(updates);
-            // yield return updateResult;
-
             var download = Addressables.DownloadDependenciesAsync(needMaps, Addressables.MergeMode.Union,false);
             while (!download.IsDone)
             {
                 updateGUI?.UpdateProgress(download.PercentComplete);
-   
                 yield return null;
             }
             updateGUI?.UpdateProgress(1);
-
             updateGUI?.CloseSpeed();
 
-            yield return 0;
+             var updateResult = Addressables.UpdateCatalogs(updates);
+             yield return updateResult;
 
             Addressables.Release(download);
         }
         else
         {
-           // var updateResult = Addressables.UpdateCatalogs(updates);
-           // yield return updateResult;
+            var updateResult = Addressables.UpdateCatalogs(updates);
+            yield return updateResult;
         }
     }
   

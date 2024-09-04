@@ -34,9 +34,9 @@ MonoBehaviour:
   m_RedirectLimit: -1
   m_RetryCount: 0
   m_BuildPath:
-    m_Id: c744d7109191b0f4b85e1d4068d03b55
+    m_Id: 37772858e4feb9c4c8e052e31650a224
   m_LoadPath:
-    m_Id: 58797ff2883d5f145afbfad2b689dcf9
+    m_Id: 6605c5578d1b7cb468626160a546bd8d
   m_BundleMode: 2
   m_AssetBundleProviderType:
     m_AssemblyName: Unity.Addressables, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null

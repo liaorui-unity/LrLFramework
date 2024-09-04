@@ -10,12 +10,16 @@ using UnityEditor.U2D;
 using System.Text;
 using UnityEngine.AddressableAssets;
 using UnityEditor.AddressableAssets.Settings.GroupSchemas;
-using HybridCLR.Editor;
-using HybridCLR.Editor.Commands;
+
 using System.Threading.Tasks;
 using System.Linq;
 using UnityEditor.Callbacks;
 using UnityEngine.Events;
+
+#if CLR
+using HybridCLR.Editor;
+using HybridCLR.Editor.Commands;
+#endif
 
 
 public enum BuildEnvironment
@@ -63,6 +67,8 @@ public class AddressableWindow : EditorWindow
         }
     }
 
+
+#if CLR
     [MenuItem("BuildTools/Compile  => HotfixDll Add Build")]
     public static void Compile2Ab()
     {
@@ -71,21 +77,18 @@ public class AddressableWindow : EditorWindow
         BuildContent();
     }
 
-
-
     [MenuItem("BuildTools/Compile  => HotfixDll")]
     public static void Compile()
     {
        CopyAllAssembliesPostIl2CppStripDir();
     }
 
-
     [MenuItem("BuildTools/Generate => Link All")]
     public static void Generate()
     {
         PrebuildCommand.GenerateAll();
     }
-
+#endif
 
     [MenuItem("BuildTools/Window  => AddressableWindow")]
     public static void ShowWindow()
@@ -565,10 +568,12 @@ public class AddressableWindow : EditorWindow
     /// <param name="status"></param>
     private async void buildByStatus(int status)
     {
+#if CLR
         await CopyAllAssembliesPostIl2CppStripDir();
 
         PrebuildCommand.GenerateAll();
-        
+#endif
+
         AddressableBuildMD5.FindOldMD5(remoteBuildPath);
 
         BuildContent();
@@ -1059,6 +1064,8 @@ public class AddressableWindow : EditorWindow
     }
     #endregion
 
+
+#if CLR
     [DidReloadScripts]
     public static void CopyDll()
     {
@@ -1118,4 +1125,5 @@ public class AddressableWindow : EditorWindow
 
         await Task.Delay(1000);
     }
+#endif
 }

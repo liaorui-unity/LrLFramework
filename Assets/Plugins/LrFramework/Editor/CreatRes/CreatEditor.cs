@@ -3,11 +3,7 @@ using UnityEditor;
 
 public class CreatEditor : Editor
 {
-    static string addressablePath = "Assets/AddressableAssets";
     static string saveTagsPath => System.Environment.CurrentDirectory + $"/Assets/Scripts/Auto/Engine/TagAndLayer.cs";
-    static string saveAddressablePath => System.Environment.CurrentDirectory + $"/Assets/Scripts/Auto/Engine/AddressFolder.cs";
-
-
 
 
     [MenuItem("Assets/Lr/Save Tags And Layer ", false, 10)]

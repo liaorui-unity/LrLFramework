@@ -15,6 +15,4 @@ MonoBehaviour:
   data:
     IsInitRuning: 1
     IsWriteLog: 1
-    isRuning: 0
-    runingProgressId: 0
-    runingProgressName: 
+    isRuning: 1

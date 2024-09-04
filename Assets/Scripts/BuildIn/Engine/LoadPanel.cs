@@ -12,7 +12,6 @@ public enum LoadMode
 
 public class LoadPanel : MonoBehaviour
 {
-
     static LoadPanel _instance;
     public static LoadPanel instance
     {
@@ -29,7 +28,6 @@ public class LoadPanel : MonoBehaviour
             return _instance;
         }
     }
-
 
     public Slider slider;
     public Image  imgFill;
@@ -58,15 +56,15 @@ public class LoadPanel : MonoBehaviour
 
     public void Init(UnityAction downCall)
     {
-        all.gameObject.SetActive(true);
-        speed.gameObject.SetActive(true);
-        downBt.gameObject.SetActive(true);
+        all    . gameObject . SetActive(true);
+        speed  . gameObject . SetActive(true);
+        downBt . gameObject . SetActive(true);
 
         downBt.onClick.AddListener(() =>
         {
-            downBt.gameObject.SetActive(false);
-            downCall?.Invoke();
-            downCall = null;
+            downBt    . gameObject . SetActive(false);
+            downCall? . Invoke();
+            downCall  = null;
         });
 
     }

@@ -1,3 +1,4 @@
+
 using UniRx;
 using System.IO;
 using UnityEngine;
@@ -9,7 +10,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.AddressableAssets.ResourceLocators;
 using System.Linq;
 
-public class CheckUpdateCatalog : MonoBehaviour
+public class CheckUpdateCatalog :MonoBehaviour
 {
     NeedUpdateGUI updateGUI;
     LoadNewRemotedAsset remotedAsset;
@@ -107,7 +108,6 @@ public class CheckUpdateCatalog : MonoBehaviour
 
     public class LoadNewRemotedAsset
     {
-
         public List<ResourceLocatorInfo> remotedInfos;
      
         object GetField()
@@ -115,7 +115,6 @@ public class CheckUpdateCatalog : MonoBehaviour
             var impl = typeof(Addressables).GetField("m_AddressablesInstance", BindingFlags.Static | BindingFlags.NonPublic).GetValue(null);
             return impl.GetType().GetField("m_ResourceLocators", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(impl);
         }
-
 
         string _remotedPath;
         public string remotedCatalogPath => _remotedPath = _remotedPath ?? GetRemoteCatalogLocationPath();
@@ -137,10 +136,8 @@ public class CheckUpdateCatalog : MonoBehaviour
                     }
                 }
             }
-
             return path;
         }
-
         public string remotedDirc => Path.GetDirectoryName(remotedCatalogPath);
     }
     public class NeedUpdateGUI
@@ -218,5 +215,5 @@ public class CheckUpdateCatalog : MonoBehaviour
             return str;
         }
     }
-
 }
+

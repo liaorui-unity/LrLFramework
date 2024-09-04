@@ -22,8 +22,6 @@ public class AutoTagAndLayer
         }
         builder.AppendLine($"  {CreatUtil.GetFormat(order)}{CreatUtil.RightSymbol}");
 
-
-
         builder.AppendLine($"  {CreatUtil.GetFormat(order)}//自动生成类，不能修改");
         builder.AppendLine($"  {CreatUtil.GetFormat(order)}public class LayerConst");
         builder.AppendLine($"  {CreatUtil.GetFormat(order)}{CreatUtil.LeftSymbol}");

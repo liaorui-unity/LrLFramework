@@ -22,16 +22,25 @@ public class AssetCacheWindow : EditorWindow
     }
 
     [System.Serializable]
+    public class CacheFile
+    {
+        public string path;
+        public CacheMode mode;
+    }
+
+    [System.Serializable]
     public class CacheData
     {
         public List<string> txtFitters;
         public List<string> bytesFitters;
+
+        public List<CacheFile> cacheFiles;
         public List<CacheInfo> cacheInfos;
     }
 
     public List<string> bytesFitters = new List<string>() { ".bytes",".dat"};
     public List<string> txtFitters   = new List<string>() { ".st",".json",".config",".txt" };
-
+    public List<string> files        = new List<string>();
     static string cachePath = System.Environment.CurrentDirectory + "/ProjectSettings/Cache.dat";
 
     static CacheData _cacheData;
@@ -65,6 +74,7 @@ public class AssetCacheWindow : EditorWindow
     SerializedProperty cacha;
     SerializedProperty bytesProperty;
     SerializedProperty txtProperty;
+    SerializedProperty filesProperty;
 
     [MenuItem("Cache/Assets Linker")]
     public static void ShowWindow()
@@ -96,22 +106,58 @@ public class AssetCacheWindow : EditorWindow
         sObject = new SerializedObject(this);
         bytesProperty = sObject.FindProperty("bytesFitters");
         txtProperty   = sObject.FindProperty("txtFitters");
-
-     
+        filesProperty = sObject.FindProperty("files");
     }
 
 
     private void OnGUI()
     {
-
         sObject.UpdateIfRequiredOrScript();
-
 
         EditorGUILayout.PropertyField(txtProperty, true);
         EditorGUILayout.PropertyField(bytesProperty, true);
        
-
         sObject.ApplyModifiedProperties();
+
+        EditorGUICustom.DrawTitleColor("Files", green, (_) =>
+        {
+            for (int i = cacheData.cacheFiles.Count - 1; i >= 0; i--)
+            {
+                var cache = cacheData.cacheFiles[i];
+
+                GUILayout.BeginHorizontal();
+                //绘制一个可以接受拖拽文件夹的框
+                if (string.IsNullOrEmpty(cache.path))
+                {
+                    GUILayout.Label("请拖拽文件到这里");
+                }
+                else
+                {
+                    GUILayout.Label(cache.path);
+                    EditorGUI.DrawRect(GUILayoutUtility.GetLastRect(), blue);
+                    GUI.Label(GUILayoutUtility.GetLastRect(), cache.path);
+                }
+
+                cache.path = HandleDragAndDrop(GUILayoutUtility.GetLastRect(), cache.path);
+                cache.mode = (CacheMode)EditorGUILayout.EnumPopup(cache.mode, GUILayout.Width(60));
+
+                //删除按钮
+                if (GUILayout.Button("-", GUILayout.Width(20)))
+                {
+                    cacheData.cacheFiles.Remove(cache);
+                }
+                GUILayout.EndHorizontal();
+            }
+        });
+
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        //添加按钮
+        if (GUILayout.Button("+", GUILayout.Width(60)))
+        {
+            cacheData.cacheFiles.Insert(0,new CacheFile());
+        }
+        GUILayout.EndHorizontal();
 
         //显示cacheInfos的内容
         EditorGUICustom.DrawTitleColor("Cache", green, (_) =>
@@ -165,12 +211,7 @@ public class AssetCacheWindow : EditorWindow
             {
                 cacheData.txtFitters   = txtFitters;
                 cacheData.bytesFitters = bytesFitters;
-
-                foreach (var item in cacheData.cacheInfos)
-                {
-                    Debug.Log(item.path);
-                }
-
+                
                 File.WriteAllText(cachePath, JsonUtility.ToJson(cacheData));
             }
             GUILayout.FlexibleSpace();
@@ -202,7 +243,7 @@ public class AssetCacheWindow : EditorWindow
         return CacheMode.None;
     }
 
-    private string HandleDragAndDrop(Rect dropArea,CacheInfo info, string inPath)
+    private string HandleDragAndDrop(Rect dropArea, CacheInfo info, string inPath)
     {
         Event evt = Event.current;
         if (evt.type == EventType.DragUpdated || evt.type == EventType.DragPerform)
@@ -229,7 +270,38 @@ public class AssetCacheWindow : EditorWindow
                     }
                 }
             }
+            evt.Use();
+        }
 
+        return inPath;
+    }
+
+    private string HandleDragAndDrop(Rect dropArea,  string inPath)
+    {
+        Event evt = Event.current;
+        if (evt.type == EventType.DragUpdated || evt.type == EventType.DragPerform)
+        {
+            if (!dropArea.Contains(evt.mousePosition))
+                return inPath;
+
+            DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
+
+            if (evt.type == EventType.DragPerform)
+            {
+                DragAndDrop.AcceptDrag();
+
+                foreach (var draggedObject in DragAndDrop.objectReferences)
+                {
+                    if (draggedObject is DefaultAsset)
+                    {
+                        string path = AssetDatabase.GetAssetPath(draggedObject);
+                        if (AssetDatabase.IsValidFolder(path) == false)
+                        {
+                            return inPath = path;
+                        }
+                    }
+                }
+            }
             evt.Use();
         }
 

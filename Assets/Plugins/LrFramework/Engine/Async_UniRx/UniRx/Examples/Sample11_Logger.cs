@@ -24,7 +24,7 @@ namespace UniRx.Examples
                 .Where(x => x.LogType == LogType.Exception)
                 .Subscribe(x =>
                 {
-                    // ObservableWWW.Post("", null).Subscribe();
+                   //  ObservableWWW.Post("", null).Subscribe();
                 });
         }
 

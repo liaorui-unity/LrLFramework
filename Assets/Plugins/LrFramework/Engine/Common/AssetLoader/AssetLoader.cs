@@ -32,10 +32,11 @@ public enum CacheMode
 
 public class AssetLoader : Singleton<AssetLoader>
 {
-    public LoadLinker loadLinker;
+    const string linkName    = "AssetLinker";
+    static string linkerDest = $"{Application.persistentDataPath}/{linkName}";
+    static string linkerName = $"{linkName}.json";
 
-    static string linkerDest = $"{Application.persistentDataPath}/AssetLinker";
-    static string linkerName = "AssetLinker.json";
+    public LoadLinker loadLinker;
 
     string ToStreamPath(string path)
     {

@@ -6,7 +6,6 @@ using System;
 using UnityEditor;
 using System.Linq;
 using System.Text;
-using dnlib.DotNet.Resources;
 
 namespace AddressableExtend
 {

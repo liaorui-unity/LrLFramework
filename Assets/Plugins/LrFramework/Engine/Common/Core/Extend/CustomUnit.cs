@@ -133,8 +133,6 @@ public enum CallType
 
         public static void Destroy(bool IsDont=false)
         {
-        Debug.Log("  CallUnit.updateCall：" + CallUnit.updateCall.GetPersistentEventCount());
-
             CallUnit.destroyCall?.Invoke();
 
             CallUnit.updateCall = new UnityEvent() ;

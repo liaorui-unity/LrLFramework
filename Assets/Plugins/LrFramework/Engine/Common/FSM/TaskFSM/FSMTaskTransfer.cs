@@ -9,15 +9,15 @@ namespace FSM
     {
         bool isComplete { get; }
 
-        void Enter(); //״̬ί�У���ʼ
-        void Update();//״̬ί�У�ˢ��
-        void Exit();  //״̬ί�У��˳�
+        void Enter(); //状态委托：开始
+        void Update();//状态委托：刷新
+        void Exit();  //状态委托：退出
         void Input(IFSMConditions conditions);
     }
 
 
 
-    public abstract class FSMTaskTransfer :IFSMTransfer
+    public abstract class FSMTaskTransfer : IFSMTransfer
     {
         public bool isComplete { get; protected set; } = false;
 

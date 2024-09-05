@@ -16,8 +16,13 @@ public class MainLogic : MonoBehaviour
 
     async void Start()
     {
-        var updateCatalog = this.gameObject.AddComponent<CheckUpdateCatalog>();
+        //检查版本资源是否有更新
+        var   updateCatalog = this.gameObject.AddComponent<CheckUpdateCatalog>();
         await updateCatalog.CheckUpdte();
+
+        //初始化资源加载
+        await AssetLoader.instance.Init();
+
 #if CLR
         var hotfix = this.gameObject.AddComponent<LoadHotfix>();
         await hotfix.Load();

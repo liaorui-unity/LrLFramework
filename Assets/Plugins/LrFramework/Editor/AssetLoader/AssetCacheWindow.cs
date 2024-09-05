@@ -215,7 +215,7 @@ public class AssetCacheWindow : EditorWindow
                 File.WriteAllText(cachePath, JsonUtility.ToJson(cacheData));
             }
 
-            if (GUILayout.Button("Create", GUILayout.Width(100)))
+            if (GUILayout.Button("更新配置表", GUILayout.Width(100)))
             {
                 AssetCacheProsser.CreateLinker();
             }

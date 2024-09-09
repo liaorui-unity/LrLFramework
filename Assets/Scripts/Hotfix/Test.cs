@@ -20,7 +20,8 @@ public class FGG : ScriptableObject
 
 public class Test : MonoBehaviour
 {
-    public Tr w;
+
+    public Tr w235667;
     public FGG fe;
     // Start is called before the first frame update
     void Start()

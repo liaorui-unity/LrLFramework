@@ -1,4 +1,4 @@
-﻿//=======================================================
+//=======================================================
 // 作者：LR
 // 公司：广州纷享科技发展有限公司
 // 描述：
@@ -13,17 +13,17 @@ using System;
 
 namespace Table
 {
-	public class SetSortingLayersWindow : EditorWindow 
-	{
-        public SetSortingLayersWindow()
+    public class SetSortingLayersIdWindow : EditorWindow
+    {
+        public SetSortingLayersIdWindow()
         {
-            this.titleContent = new GUIContent("Sorting Layers");
+            this.titleContent = new GUIContent("Sorting Layers ID");
         }
 
-        [MenuItem("GameObject/Sorting Layers窗口", false, -1)]
+        [MenuItem("GameObject/Sorting Layers ID窗口", false, -1)]
         public static void CreateLayerWindows()
         {
-            EditorWindow.GetWindow(typeof(SetSortingLayersWindow));
+            EditorWindow.GetWindow(typeof(SetSortingLayersIdWindow));
         }
 
 
@@ -37,7 +37,6 @@ namespace Table
             }
             defaultLayers = dLayers.ToArray();
 
-
             FindAllTransfrom(Selection.activeGameObject.transform);
         }
 
@@ -49,7 +48,7 @@ namespace Table
 
         private void OnGUI()
         {
-            scrollPos = GUILayout.BeginScrollView(scrollPos,GUILayout.Width(position.width),GUILayout.Height(position.height));
+            scrollPos = GUILayout.BeginScrollView(scrollPos, GUILayout.Width(position.width), GUILayout.Height(position.height));
 
             GUILayout.Space(20);
             if (changeLayers == null)
@@ -60,17 +59,16 @@ namespace Table
             }
             changeID = GUILayout.Toolbar(changeID, changeLayers);
 
-      
 
-            GUILayout.BeginVertical("box", GUILayout.Width(position.width-10), GUILayout.MinHeight(100));
+
+            GUILayout.BeginVertical("box", GUILayout.Width(position.width - 10), GUILayout.MinHeight(100));
 
 
             GUILayout.Space(10);
 
-            
             GUI.skin.label.alignment = TextAnchor.UpperLeft;
             GUI.skin.label.normal.textColor = new Color(0.5f, 0.8f, 1.0f, 1.0f);
-            GUILayout.Label("当前层级(Sorting layer)："+ layerDatas[layerIDs[changeID]].layerName);
+            GUILayout.Label("当前层级(Sorting layer)：" + layerDatas[layerIDs[changeID]].layerName);
 
             GUILayout.Space(10);
             GUILayout.BeginHorizontal();
@@ -81,7 +79,7 @@ namespace Table
 
             GUILayout.Space(20);
 
-            foldout = EditorGUILayout.Foldout(foldout, "层级为 "+ layerDatas[layerIDs[changeID]].layerName + " 的物体");
+            foldout = EditorGUILayout.Foldout(foldout, "层级为 " + layerDatas[layerIDs[changeID]].layerName + " 的物体");
             if (foldout)
             {
                 for (int i = 0; i < layerDatas[layerIDs[changeID]].mainObjs.Count; i++)
@@ -104,7 +102,7 @@ namespace Table
                 }
                 else
                 {
-                    EditorGUILayout.HelpBox(seleted.currentName + " 的层级更改为 "+ seleted.changeName, MessageType.Info);
+                    EditorGUILayout.HelpBox(seleted.currentName + " 的层级更改为 " + seleted.changeName, MessageType.Info);
                 }
             }
             //---提示对应layer的改变---end
@@ -192,7 +190,7 @@ namespace Table
 
 
 
-            public SortTypeData(SortType sortType,GameObject gm)
+            public SortTypeData(SortType sortType, GameObject gm)
             {
                 this.sortType = sortType;
                 if (sortType == SortType.Canvas)
@@ -207,7 +205,7 @@ namespace Table
                 {
                     if (m_Canvas != null)
                     {
-                        if (m_Canvas.overrideSorting|| m_Canvas.isRootCanvas)
+                        if (m_Canvas.overrideSorting || m_Canvas.isRootCanvas)
                         {
                             m_Canvas.sortingLayerID = id;
                         }
@@ -222,7 +220,7 @@ namespace Table
                 }
             }
 
-            public void SetOrderInLayer(int  id)
+            public void SetOrderInLayer(int id)
             {
                 if (sortType == SortType.Canvas)
                 {
@@ -297,35 +295,8 @@ namespace Table
         /// 保存transfrom对应int的数组
         /// </summary>
         public Dictionary<int, LayerData> layerDatas = new Dictionary<int, LayerData>();
-        public Dictionary<int, SeletedLayer> layerStds = new Dictionary<int, SeletedLayer>();         
+        public Dictionary<int, SeletedLayer> layerStds = new Dictionary<int, SeletedLayer>();
         public List<int> layerIDs = new List<int>();
-
-        //public static  List<Type> layerTypes = new List<Type>();
-
-
-        //public static bool GetMainType(GameObject gm,out SortTypeData outMain)
-        //{
-        //    for (int i = 0; i < layerTypes.Count; i++)
-        //    {
-        //       var main = gm.GetComponent(layerTypes[i]);
-        //        if (main != null)
-        //        {
-        //            if (main is Renderer)
-        //            {
-        //                outMain = new SortTypeData(SortType.Render, gm);
-        //                return true;
-        //            }
-        //            else 
-        //            {
-        //                outMain = new SortTypeData(SortType.Canvas, gm);
-        //                return true;
-        //            }
-        //        }
-        //    }
-        //    outMain = null;
-        //    return false;
-        //}
-
 
         /// <summary>
         /// 查找所有的Transfrom
@@ -338,7 +309,7 @@ namespace Table
             SortTypeData main;
             for (int i = 0; i < targets.Length; i++)
             {
-                if (SoringLayersData. GetMainType(targets[i].gameObject,out main))
+                if (SoringLayersData.GetMainType(targets[i].gameObject, out main))
                 {
                     int layerID = main.SortLayerID;
 
@@ -363,7 +334,7 @@ namespace Table
                         SeletedLayer seleted = new SeletedLayer(dLayers);
 
                         int id = dLayers.FindIndex((x) => x == SortingLayer.IDToName(layerID));
-                        seleted.changeID = id;
+                        seleted.changeID  = id;
                         seleted.currentID = id;
 
                         layerStds.Add(layerID, seleted);
@@ -413,10 +384,7 @@ namespace Table
                 return false;
             }
         }
-
     }
-
-
-   
-
 }
+
+

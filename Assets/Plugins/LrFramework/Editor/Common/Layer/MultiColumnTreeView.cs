@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using LayerAndSorting;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -12,16 +13,6 @@ namespace UnityEditor.TreeViewExamples
 		const float kRowHeights = 20f;
 		const float kToggleWidth = 18f;
 		public bool showControls = true;
-
-		static Texture2D[] s_TestIcons =
-		{
-			EditorGUIUtility.FindTexture ("Folder Icon"),
-			EditorGUIUtility.FindTexture ("AudioSource Icon"),
-			EditorGUIUtility.FindTexture ("Camera Icon"),
-			EditorGUIUtility.FindTexture ("Windzone Icon"),
-			EditorGUIUtility.FindTexture ("GameObject Icon")
-
-		};
 
 		// All columns
 		enum MyColumns
@@ -80,7 +71,7 @@ namespace UnityEditor.TreeViewExamples
 
 		public MultiColumnTreeView (TreeViewState state, MultiColumnHeader multicolumnHeader, TreeModel<LsInfo> model) : base (state, multicolumnHeader, model)
 		{
-			Assert.AreEqual(m_SortOptions.Length , Enum.GetValues(typeof(MyColumns)).Length, "Ensure number of sort options are in sync with number of MyColumns enum values");
+//			Assert.AreEqual(m_SortOptions.Length , Enum.GetValues(typeof(MyColumns)).Length, "Ensure number of sort options are in sync with number of MyColumns enum values");
 
 			// Custom setup
 			rowHeight = kRowHeights;
@@ -180,7 +171,7 @@ namespace UnityEditor.TreeViewExamples
 
 		protected override void RowGUI (RowGUIArgs args)
 		{
-			var item = (TreeViewItem<MyTreeElement>) args.item;
+			var item = (TreeViewItem<LsInfo>) args.item;
 
 			for (int i = 0; i < args.GetNumVisibleColumns (); ++i)
 			{
@@ -188,7 +179,7 @@ namespace UnityEditor.TreeViewExamples
 			}
 		}
 
-		void CellGUI (Rect cellRect, TreeViewItem<MyTreeElement> item, MyColumns column, ref RowGUIArgs args)
+		void CellGUI (Rect cellRect, TreeViewItem<LsInfo> item, MyColumns column, ref RowGUIArgs args)
 		{
 			// Center cell rect vertically (makes it easier to place controls, icons etc in the cells)
 			CenterRectUsingSingleLineHeight(ref cellRect);
@@ -201,10 +192,11 @@ namespace UnityEditor.TreeViewExamples
 						Rect toggleRect = cellRect;
 						toggleRect.x += GetContentIndent(item);
 						toggleRect.width = kToggleWidth;
-						if (toggleRect.xMax < cellRect.xMax)
-							item.data.enabled = EditorGUI.Toggle(toggleRect, item.data.enabled); // hide when outside cell rect
-
-						// Default icon and label
+						// if (toggleRect.xMax < cellRect.xMax)
+						// {
+						// 	item.data.enabled = EditorGUI.Toggle(toggleRect, item.data.enabled); // hide when outside cell rect
+						// }
+						// // Default icon and label
 						args.rowRect = cellRect;
 						base.RowGUI(args);
 					}
@@ -218,24 +210,24 @@ namespace UnityEditor.TreeViewExamples
 						{
 							cellRect.xMin += 5f; // When showing controls make some extra spacing
 
-							if (column == MyColumns.Value1)
-								item.data.floatValue1 = EditorGUI.Slider(cellRect, GUIContent.none, item.data.floatValue1, 0f, 1f);
-							if (column == MyColumns.Value2)
-								item.data.material = (Material)EditorGUI.ObjectField(cellRect, GUIContent.none, item.data.material, typeof(Material), false);
-							if (column == MyColumns.Value3)
-								item.data.text = GUI.TextField(cellRect, item.data.text);
+							// if (column == MyColumns.Value1)
+							// 	item.data.floatValue1 = EditorGUI.Slider(cellRect, GUIContent.none, item.data.floatValue1, 0f, 1f);
+							// if (column == MyColumns.Value2)
+							// 	item.data.material = (Material)EditorGUI.ObjectField(cellRect, GUIContent.none, item.data.material, typeof(Material), false);
+							// if (column == MyColumns.Value3)
+							// 	item.data.text = GUI.TextField(cellRect, item.data.text);
 						}
 						else
 						{
-							string value = "Missing";
-							if (column == MyColumns.Value1)
-								value = item.data.floatValue1.ToString("f5");
-							if (column == MyColumns.Value2)
-								value = item.data.floatValue2.ToString("f5");
-							if (column == MyColumns.Value3)
-								value = item.data.floatValue3.ToString("f5");
+							// string value = "Missing";
+							// if (column == MyColumns.Value1)
+							// 	value = item.data.floatValue1.ToString("f5");
+							// if (column == MyColumns.Value2)
+							// 	value = item.data.floatValue2.ToString("f5");
+							// if (column == MyColumns.Value3)
+							// 	value = item.data.floatValue3.ToString("f5");
 
-							DefaultGUI.LabelRightAligned(cellRect, value, args.selected, args.focused);
+							//DefaultGUI.LabelRightAligned(cellRect, value, args.selected, args.focused);
 						}
 					}
 					break;

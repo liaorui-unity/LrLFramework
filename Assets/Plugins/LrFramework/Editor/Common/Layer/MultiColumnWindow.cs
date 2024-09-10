@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using LayerAndSorting;
 using UnityEditor.Callbacks;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
@@ -17,6 +18,9 @@ namespace UnityEditor.TreeViewExamples
 		MultiColumnTreeView m_TreeView;
 		List<LsInfo> m_Infos;
 
+
+        
+
 		[MenuItem("TreeView Examples/Multi Columns")]
 		public static MultiColumnWindow GetWindow ()
 		{
@@ -30,7 +34,7 @@ namespace UnityEditor.TreeViewExamples
 
 		public void SetTreeAsset ()
 		{
-
+            
 			m_Initialized = false;
 		}
 
@@ -89,9 +93,22 @@ namespace UnityEditor.TreeViewExamples
 				return m_Infos;
 
 			// generate some test data
-			m_Infos = new List<LsInfo> ();
+			m_Infos = new List<LsInfo>()
+			{
+				new LsInfo(SortType.Render,null){ name = "Root", depth =-1},
+			};
+
+			LayerAndSorting.LayerAndSortingData.FindAllTransfrom(Selection.activeTransform);
+
+			m_Infos.AddRange(LayerAndSorting.LayerAndSortingData.lSInfos);
+
+			Debug.Log(m_Infos.Count);
+
 			return m_Infos;
 		}
+
+
+
 
 		void OnSelectionChange ()
 		{

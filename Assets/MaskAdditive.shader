@@ -6,6 +6,11 @@ Shader "Custom/Particles/MaskedAdditive"
         _MaskTex ("遮罩纹理(Mask Texture)", 2D) = "black" {}
         [HDR]_TintColor ("颜色调整(Tint Color)", Color) = (1,1,1,1)
          _DiscardThreshold ("丢弃阈值(Discard Threshold)", Range(0,1)) = 0.1
+        _UVMainX("主UV X", Float) = 0.0
+        _UVMainY("主UV Y", Float) = 0.0
+
+        _UVMaskX("遮罩UV X", Float) = 0.0
+        _UVMaskY("遮罩UV Y", Float) = 0.0
     }
     SubShader
     {
@@ -30,6 +35,12 @@ Shader "Custom/Particles/MaskedAdditive"
             float4 _TintColor;
             float _DiscardThreshold;
 
+            float _UVMainX;
+            float _UVMainY;
+
+            float _UVMaskX;
+            float _UVMaskY;
+
             struct appdata_t
             {
                 float4 vertex  : POSITION;
@@ -47,8 +58,8 @@ Shader "Custom/Particles/MaskedAdditive"
             {
                 v2f o;
                 o.pos = UnityObjectToClipPos(v.vertex);
-                o.texcoord = v.texcoord;
-                o.maskTexcoord = v.texcoord; // Assuming same UVs for simplicity
+                o.texcoord = v.texcoord + float2(_Time.y * _UVMainX,  _Time.y*_UVMainY);
+                o.maskTexcoord = v.texcoord+ float2(_Time.y*_UVMaskX, _Time.y*_UVMaskY);
                 return o;
             }
 

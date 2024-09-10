@@ -7,6 +7,12 @@ Shader "Custom/Particles/MaskedAlpha"
         [HDR]_TintColor ("颜色调整(Tint Color)", Color) = (1,1,1,1)
         _DiscardThreshold ("丢弃阈值(Discard Threshold)", Range(0,1)) = 0.1
         _Alpha ("透明度(Alpha)", Range(0,1)) = 0.1
+      
+         _UVMainX("主UV X", Float) = 0.0
+        _UVMainY("主UV Y", Float) = 0.0
+
+        _UVMaskX("遮罩UV X", Float) = 0.0
+        _UVMaskY("遮罩UV Y", Float) = 0.0
     }
     SubShader
     {
@@ -31,6 +37,13 @@ Shader "Custom/Particles/MaskedAlpha"
             float4 _TintColor;
             float _DiscardThreshold;
             float _Alpha;
+     
+
+            float _UVMainX;
+            float _UVMainY;
+
+            float _UVMaskX;
+            float _UVMaskY;
 
             struct appdata_t
             {
@@ -49,8 +62,8 @@ Shader "Custom/Particles/MaskedAlpha"
             {
                 v2f o;
                 o.pos = UnityObjectToClipPos(v.vertex);
-                o.texcoord = v.texcoord;
-                o.maskTexcoord = v.texcoord; // Assuming same UVs for simplicity
+                o.texcoord = v.texcoord + float2(_Time.y * _UVMainX, _Time.y * _UVMainY); 
+                o.maskTexcoord = v.texcoord+ float2(_Time.y*_UVMaskX, _Time.y*_UVMaskY);
                 return o;
             }
 
@@ -59,7 +72,6 @@ Shader "Custom/Particles/MaskedAlpha"
                 fixed4 mainColor = tex2D(_MainTex, i.texcoord) * _TintColor;
                 fixed4 maskColor = tex2D(_MaskTex, i.maskTexcoord);
 
-
                 bool isBlack = maskColor.r < _DiscardThreshold && maskColor.g < _DiscardThreshold && maskColor.b < _DiscardThreshold;
 
                 if (isBlack)
@@ -67,7 +79,6 @@ Shader "Custom/Particles/MaskedAlpha"
                     discard; 
                 }
 
-             
                 mainColor.a *= _Alpha;
 
                 return mainColor;

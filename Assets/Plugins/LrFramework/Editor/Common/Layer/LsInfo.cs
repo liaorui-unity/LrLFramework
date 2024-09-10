@@ -6,6 +6,12 @@ using UnityEngine;
 namespace LayerAndSorting
 {
 
+    public enum SortType
+    {
+        Render,
+        Canvas
+    }
+
     public class LsInfo : TreeElement
     {
         public SortType sortType = SortType.Render;

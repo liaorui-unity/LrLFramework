@@ -153,8 +153,7 @@ namespace LayerAndSorting
 
             mainGo = go;
             name = go.name;
-            depth = 0;
-            this. id = id+3;
+            this. id = id;
         }
    
     }

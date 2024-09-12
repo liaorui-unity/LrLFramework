@@ -41,6 +41,7 @@ namespace UnityEditor.TreeViewExamples
 		// The rest of the items should have depth >= 0. 
 		public static T ListToTree<T>(IList<T> list) where T : TreeElement
 		{
+
 			// Validate input
 			ValidateDepthValues (list);
 
@@ -118,8 +119,10 @@ namespace UnityEditor.TreeViewExamples
 				if (list[i].depth < 0)
 					throw new ArgumentException("Invalid depth value for item at index " + i + ". Only the first item (the root) should have depth below 0.");
 
-			if (list.Count > 1 && list[1].depth != 0)
+            if (list.Count > 1 && list[1].depth != 0)
 				throw new ArgumentException("Input list item at index 1 is assumed to have a depth of 0", "list");
+
+	
 		}
 
 

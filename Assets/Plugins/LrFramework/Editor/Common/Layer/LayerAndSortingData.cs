@@ -10,6 +10,9 @@ namespace LayerAndSorting
     {
         public static List<LsInfo> lSInfos = new List<LsInfo>();
 
+
+
+
         /// <summary>
         /// 查找所有的Transfrom
         /// </summary>
@@ -20,11 +23,14 @@ namespace LayerAndSorting
 
             lSInfos.Clear();
 
+
+
             for (int i = 0; i < targets.Length; i++)
             {
-               var main = GetMainType(targets[i].gameObject);
+                var main = GetMainType(targets[i].gameObject, lSInfos.Count);
                 if (main != null)
                 {
+                    main.depth = 0;
                     lSInfos.Add(main);
                 }
             }
@@ -39,7 +45,7 @@ namespace LayerAndSorting
         };
 
 
-        public static LsInfo GetMainType(GameObject go)
+        public static LsInfo GetMainType(GameObject go, int id)
         {
             for (int i = 0; i < fifterTypes.Count; i++)
             {
@@ -48,15 +54,15 @@ namespace LayerAndSorting
                 {
                     if (main is Renderer)
                     {
-                        return new LsInfo(SortType.Render, go,i);
+                        return new LsInfo(SortType.Render, go, id);
                     }
                     else if (main is Canvas)
                     {
-                        return new LsInfo(SortType.Canvas, go,i);
+                        return new LsInfo(SortType.Canvas, go, id);
                     }
                     else if (main is ParticleSystem)
                     {
-                        return new LsInfo(SortType.Particle, go,i);
+                        return new LsInfo(SortType.Particle, go, id);
                     }
                 }
             }

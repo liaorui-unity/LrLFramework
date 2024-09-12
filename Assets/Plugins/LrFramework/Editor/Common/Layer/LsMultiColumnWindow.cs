@@ -9,7 +9,7 @@ using UnityEngine;
 namespace UnityEditor.TreeViewExamples
 {
 
-	internal class MultiColumnWindow : EditorWindow
+	internal class LsMultiColumnWindow : EditorWindow
 	{
 		[NonSerialized] bool m_Initialized;
 		[SerializeField] TreeViewState m_TreeViewState; // Serialized in the window layout file so it survives assembly reloading
@@ -17,14 +17,14 @@ namespace UnityEditor.TreeViewExamples
 
 		LsMultiColumnHeader lsMultiColumnHeader;
 		TreeModel<LsInfo> treeModel;
-		MultiColumnTreeView m_TreeView;
+		LsMultiColumnTreeView m_TreeView;
 		internal List<LsInfo> m_Infos;
   
 
 		[MenuItem("TreeView Examples/Multi Columns")]
-		public static MultiColumnWindow GetWindow ()
+		public static LsMultiColumnWindow GetWindow ()
 		{
-			var window = GetWindow<MultiColumnWindow>();
+			var window = GetWindow<LsMultiColumnWindow>();
 			window.titleContent = new GUIContent("Multi Columns");
 			window.Focus();
 			window.Repaint();
@@ -51,13 +51,13 @@ namespace UnityEditor.TreeViewExamples
 				if (m_TreeViewState == null)
 					m_TreeViewState = new TreeViewState();
 
-				var headerState = MultiColumnTreeView.CreateDefaultMultiColumnHeaderState(multiColumnTreeViewRect.width);
+				var headerState = LsMultiColumnTreeView.CreateDefaultMultiColumnHeaderState(multiColumnTreeViewRect.width);
 		
 				m_MultiColumnHeaderState = headerState;
 				lsMultiColumnHeader = new LsMultiColumnHeader(headerState);
 	
 				treeModel  = new TreeModel<LsInfo>(GetData());
-				m_TreeView = new MultiColumnTreeView(m_TreeViewState, lsMultiColumnHeader, treeModel);
+				m_TreeView = new LsMultiColumnTreeView(m_TreeViewState, lsMultiColumnHeader, treeModel);
 
 				lsMultiColumnHeader.Init(this,m_TreeView);
 
@@ -70,17 +70,10 @@ namespace UnityEditor.TreeViewExamples
 			if ( m_Infos != null && m_Infos.Count > 0)
 				return m_Infos;
 
-			var root = new LsInfo(SortType.Render, null, -1)
-			{
-				name = "Root",
-				depth = -1,
-				id = -1
-			};
-
 			// generate some test data
 			m_Infos = new List<LsInfo>()
 			{
-				root
+				 new LsInfo(SortType.Render,null,0){ depth =-1}
 			};
 
 			LayerAndSortingData.FindAllTransfrom(Selection.activeTransform);

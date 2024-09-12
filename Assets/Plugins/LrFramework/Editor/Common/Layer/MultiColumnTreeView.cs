@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using LayerAndSorting;
 using UnityEditor.IMGUI.Controls;
@@ -12,67 +13,28 @@ namespace UnityEditor.TreeViewExamples
 	{
 		const float kRowHeights = 20f;
 		const float kToggleWidth = 18f;
-		public bool showControls = true;
 
 		// All columns
-		enum MyColumns
+		internal enum MyColumns
 		{
 			Name,
-			Value1,
-			Value2,
-			Value3,
+			Layer,
+			SortingLayer,
+			OrderID,
 		}
 
-		public enum SortOption
+
+		public void SetSortLayer(string[] strings)
 		{
-			Value1,
-			Value2,
-			Value3,
+			sortingNames    = strings.ToList();
+			popSortingNames = strings;
 		}
 
-		// Sort options per column
-		SortOption[] m_SortOptions = 
-		{
-			SortOption.Value1, 
-			SortOption.Value2,
-			SortOption.Value3
-		};
-
-		public static void TreeToList (TreeViewItem root, IList<TreeViewItem> result)
-		{
-			if (root == null)
-				throw new NullReferenceException("root");
-			if (result == null)
-				throw new NullReferenceException("result");
-
-			result.Clear();
-	
-			if (root.children == null)
-				return;
-
-			Stack<TreeViewItem> stack = new Stack<TreeViewItem>();
-			for (int i = root.children.Count - 1; i >= 0; i--)
-				stack.Push(root.children[i]);
-
-			while (stack.Count > 0)
-			{
-				TreeViewItem current = stack.Pop();
-				result.Add(current);
-
-				if (current.hasChildren && current.children[0] != null)
-				{
-					for (int i = current.children.Count - 1; i >= 0; i--)
-					{
-						stack.Push(current.children[i]);
-					}
-				}
-			}
-		}
+		List<string> sortingNames;
+		string[] popSortingNames;
 
 		public MultiColumnTreeView (TreeViewState state, MultiColumnHeader multicolumnHeader, TreeModel<LsInfo> model) : base (state, multicolumnHeader, model)
 		{
-//			Assert.AreEqual(m_SortOptions.Length , Enum.GetValues(typeof(MyColumns)).Length, "Ensure number of sort options are in sync with number of MyColumns enum values");
-
 			// Custom setup
 			rowHeight = kRowHeights;
 			columnIndexForTreeFoldouts = 2;
@@ -80,98 +42,44 @@ namespace UnityEditor.TreeViewExamples
 			showBorder = true;
 			customFoldoutYOffset = (kRowHeights - EditorGUIUtility.singleLineHeight) * 0.5f; // center foldout in the row since we also center content. See RowGUI
 			extraSpaceBeforeIconAndLabel = kToggleWidth;
-			multicolumnHeader.sortingChanged += OnSortingChanged;
-			
+          
 			Reload();
 		}
 
+
+	
 
 		// Note we We only build the visible rows, only the backend has the full tree information. 
 		// The treeview only creates info for the row list.
 		protected override IList<TreeViewItem> BuildRows(TreeViewItem root)
 		{
 			var rows = base.BuildRows (root);
-			SortIfNeeded (root, rows);
 			return rows;
 		}
 
-		void OnSortingChanged (MultiColumnHeader multiColumnHeader)
-		{
-			SortIfNeeded (rootItem, GetRows());
-		}
+        protected override void SingleClickedItem(int id)
+        {
+            base.SingleClickedItem(id);
 
-		void SortIfNeeded (TreeViewItem root, IList<TreeViewItem> rows)
-		{
-			if (rows.Count <= 1)
-				return;
-			
-			if (multiColumnHeader.sortedColumnIndex == -1)
-			{
-				return; // No column to sort for (just use the order the data are in)
-			}
-			
-			// Sort the roots of the existing tree items
-			SortByMultipleColumns ();
-			TreeToList(root, rows);
-			Repaint();
-		}
+			Debug.Log("id");
+        }
 
-		void SortByMultipleColumns ()
-		{
-			var sortedColumns = multiColumnHeader.state.sortedColumns;
 
-			if (sortedColumns.Length == 0)
-				return;
 
-			var myTypes = rootItem.children.Cast<TreeViewItem<MyTreeElement> >();
-			var orderedQuery = InitialOrder (myTypes, sortedColumns);
-			for (int i=1; i<sortedColumns.Length; i++)
-			{
-				SortOption sortOption = m_SortOptions[sortedColumns[i]];
-				bool ascending = multiColumnHeader.IsSortedAscending(sortedColumns[i]);
 
-				switch (sortOption)
-				{
-					case SortOption.Value1:
-						orderedQuery = orderedQuery.ThenBy(l => l.data.floatValue1, ascending);
-						break;
-					case SortOption.Value2:
-						orderedQuery = orderedQuery.ThenBy(l => l.data.floatValue2, ascending);
-						break;
-					case SortOption.Value3:
-						orderedQuery = orderedQuery.ThenBy(l => l.data.floatValue3, ascending);
-						break;
-				}
-			}
-
-			rootItem.children = orderedQuery.Cast<TreeViewItem> ().ToList ();
-		}
-
-		IOrderedEnumerable<TreeViewItem<MyTreeElement>> InitialOrder(IEnumerable<TreeViewItem<MyTreeElement>> myTypes, int[] history)
-		{
-			SortOption sortOption = m_SortOptions[history[0]];
-			bool ascending = multiColumnHeader.IsSortedAscending(history[0]);
-			switch (sortOption)
-			{
-				case SortOption.Value1:
-					return myTypes.Order(l => l.data.floatValue1, ascending);
-				case SortOption.Value2:
-					return myTypes.Order(l => l.data.floatValue2, ascending);
-				case SortOption.Value3:
-					return myTypes.Order(l => l.data.floatValue3, ascending);
-				default:
-					Assert.IsTrue(false, "Unhandled enum");
-					break;
-			}
-
-			// default
-			return myTypes.Order(l => l.data.name, ascending);
-		}
+		
+        
 
 
 		protected override void RowGUI (RowGUIArgs args)
 		{
 			var item = (TreeViewItem<LsInfo>) args.item;
+
+			// 检查选择状态
+			if (args.selected)
+			{
+				Debug.Log("Currently selected: " + item.data.name);
+			}
 
 			for (int i = 0; i < args.GetNumVisibleColumns (); ++i)
 			{
@@ -188,67 +96,45 @@ namespace UnityEditor.TreeViewExamples
 			{
 				case MyColumns.Name:
 					{
-						// Do toggle
-						Rect toggleRect = cellRect;
-						toggleRect.x += GetContentIndent(item);
-						toggleRect.width = kToggleWidth;
-						// if (toggleRect.xMax < cellRect.xMax)
-						// {
-						// 	item.data.enabled = EditorGUI.Toggle(toggleRect, item.data.enabled); // hide when outside cell rect
-						// }
-						// // Default icon and label
-						args.rowRect = cellRect;
-						base.RowGUI(args);
+						EditorGUI.LabelField(cellRect,item.data.mainGo.name);
 					}
 					break;
+				case MyColumns.Layer:
+					 item.data.Layer = EditorGUI.LayerField(cellRect, item.data.Layer);
+					 break;
+				case MyColumns.SortingLayer:
 
-				case MyColumns.Value1:
-				case MyColumns.Value2:
-				case MyColumns.Value3:
+					item.data.SortLayerSortID = sortingNames.FindIndex(x => x == item.data.SortLayerName);
+					item.data.SortLayerSortID = EditorGUI.Popup(cellRect, item.data.SortLayerSortID, popSortingNames);
+					item.data.SortLayerName   = sortingNames[item.data.SortLayerSortID];
+					break;
+				case MyColumns.OrderID:
 					{
-						if (showControls)
-						{
-							cellRect.xMin += 5f; // When showing controls make some extra spacing
-
-							// if (column == MyColumns.Value1)
-							// 	item.data.floatValue1 = EditorGUI.Slider(cellRect, GUIContent.none, item.data.floatValue1, 0f, 1f);
-							// if (column == MyColumns.Value2)
-							// 	item.data.material = (Material)EditorGUI.ObjectField(cellRect, GUIContent.none, item.data.material, typeof(Material), false);
-							// if (column == MyColumns.Value3)
-							// 	item.data.text = GUI.TextField(cellRect, item.data.text);
-						}
-						else
-						{
-							// string value = "Missing";
-							// if (column == MyColumns.Value1)
-							// 	value = item.data.floatValue1.ToString("f5");
-							// if (column == MyColumns.Value2)
-							// 	value = item.data.floatValue2.ToString("f5");
-							// if (column == MyColumns.Value3)
-							// 	value = item.data.floatValue3.ToString("f5");
-
-							//DefaultGUI.LabelRightAligned(cellRect, value, args.selected, args.focused);
-						}
+						item.data.OrderInLayer = EditorGUI.IntField(cellRect, item.data.OrderInLayer);
 					}
 					break;
 			}
 		}
 
 
-		protected override Rect GetRenameRect (Rect rowRect, int row, TreeViewItem item)
-		{
-			Rect cellRect = GetCellRectForTreeFoldouts (rowRect);
-			CenterRectUsingSingleLineHeight(ref cellRect);
-			return base.GetRenameRect (cellRect, row, item);
-		}
 
-		// Misc
-		//--------
 
-		protected override bool CanMultiSelect (TreeViewItem item)
+
+        protected override void SelectionChanged(IList<int> selectedIds)
 		{
-			return true;
+			base.SelectionChanged(selectedIds);
+
+			Debug.Log("Selected Item: " + selectedIds[0]);
+
+			if (selectedIds.Count > 0)
+			{
+				int selectedId = selectedIds[0];
+				TreeViewItem<LsInfo> selectedItem = (TreeViewItem<LsInfo>)FindItem(selectedId, rootItem);
+				Debug.Log("Selected Item: " + selectedItem.data.name);
+				// Add additional logic here for when an item is selected
+			}
 		}
+	
 
 		public static MultiColumnHeaderState CreateDefaultMultiColumnHeaderState(float treeViewWidth)
 		{
@@ -258,77 +144,159 @@ namespace UnityEditor.TreeViewExamples
 				{
 					headerContent = new GUIContent("Name"),
 					headerTextAlignment = TextAlignment.Left,
-					sortedAscending = true,
-					sortingArrowAlignment = TextAlignment.Center,
 					width = 150, 
 					minWidth = 60,
 					autoResize = false,
-					allowToggleVisibility = false
+					userData = (int)MyColumns.Name
 				},
 				new MultiColumnHeaderState.Column 
 				{
 					headerContent = new GUIContent("Layer", "In sed porta ante. Nunc et nulla mi."),
-					headerTextAlignment = TextAlignment.Right,
-					sortedAscending = true,
-					sortingArrowAlignment = TextAlignment.Left,
+					headerTextAlignment = TextAlignment.Left,
 					width = 110,
 					minWidth = 60,
-					autoResize = true
+					autoResize = true,
+					userData = (int)MyColumns.Layer
 				},
 				new MultiColumnHeaderState.Column 
 				{
-					headerContent = new GUIContent("SortingLayerID", "Maecenas congue non tortor eget vulputate."),
-					headerTextAlignment = TextAlignment.Right,
-					sortedAscending = true,
-					sortingArrowAlignment = TextAlignment.Left,
+					headerContent = new GUIContent("SortingLayer", "Maecenas congue non tortor eget vulputate."),
+					headerTextAlignment = TextAlignment.Left,
 					width = 95,
 					minWidth = 60,
 					autoResize = true,
-					allowToggleVisibility = true
+					userData = (int)MyColumns.SortingLayer
+
 				},
 				new MultiColumnHeaderState.Column 
 				{
-					headerContent = new GUIContent("OrderSorting", "Nam at tellus ultricies ligula vehicula ornare sit amet quis metus."),
-					headerTextAlignment = TextAlignment.Right,
-					sortedAscending = true,
-					sortingArrowAlignment = TextAlignment.Left,
+					headerContent = new GUIContent("OrderLayer", "Nam at tellus ultricies ligula vehicula ornare sit amet quis metus."),
+					headerTextAlignment = TextAlignment.Left,
 					width = 70,
 					minWidth = 60,
-					autoResize = true
+					autoResize = true,
+					userData = (int)MyColumns.OrderID
 				}
 			};
-
-			Assert.AreEqual(columns.Length, Enum.GetValues(typeof(MyColumns)).Length, "Number of columns should match number of enum values: You probably forgot to update one of them.");
 
 			var state =  new MultiColumnHeaderState(columns);
 			return state;
 		}
 	}
 
-	static class MyExtensionMethods
-	{
-		public static IOrderedEnumerable<T> Order<T, TKey>(this IEnumerable<T> source, Func<T, TKey> selector, bool ascending)
+
+    internal class LsMultiColumnHeader : MultiColumnHeader
+    {
+		private string[] filterSortNames;
+		private string[] filterLayerNames;
+
+		string _fifterName;
+		private string fifterName { get; set; }
+
+
+		private int sortLayerID = -1;
+		private int layerID = -1;
+		private Vector2 rangeID;
+
+		Rect GetShowArea(Rect headerRect)
 		{
-			if (ascending)
+			return new Rect(headerRect.x + headerRect.width / 2 - 2, headerRect.y / 2 + (headerRect.height - 16) / 2, headerRect.width / 2, 16);
+		}
+
+		private MultiColumnTreeView m_view;
+		private MultiColumnWindow m_window;
+		public LsMultiColumnHeader(MultiColumnHeaderState state) : base(state)
+        {
+			canSort = false;
+			filterSortNames = GetSortingLayerNames();
+		}
+
+
+		public void Init(MultiColumnWindow window, MultiColumnTreeView treeView)
+		{
+			m_window = window;
+
+			m_view = treeView;
+			m_view.SetSortLayer(filterSortNames);
+
+			// 获取所有层的名称
+			List<string> layerNames = new List<string>();
+			for (int i = 0; i < 32; i++)
 			{
-				return source.OrderBy(selector);
+				var name= LayerMask.LayerToName(i);
+				if (string.IsNullOrEmpty(name) == false)
+				{
+					layerNames.Add(name);
+				}
 			}
-			else
+			filterLayerNames = layerNames.ToArray();
+		}
+		
+
+		protected override void ColumnHeaderGUI (MultiColumnHeaderState.Column column, Rect headerRect, int columnIndex)
+		{
+            var columnType = (MultiColumnTreeView.MyColumns)column.userData;
+			switch (columnType)
 			{
-				return source.OrderByDescending(selector);
+				
+				case MultiColumnTreeView.MyColumns.Name:
+
+					// 显示列头文本
+					GUI.Label(headerRect, column.headerContent);
+
+					// 如果需要在列头显示弹出菜单
+					Rect popupRect = GetShowArea(headerRect);
+					_fifterName =  EditorGUI.TextField(popupRect, _fifterName);
+					break;
+				case MultiColumnTreeView.MyColumns.Layer:
+					Rect layerRect = GetShowArea(headerRect);
+					layerID = EditorGUI.MaskField(layerRect, layerID, filterLayerNames);
+					break;
+				case MultiColumnTreeView.MyColumns.SortingLayer:
+					Rect lsortRect = GetShowArea(headerRect);
+					sortLayerID = EditorGUI.MaskField(lsortRect,sortLayerID, filterSortNames);
+					break;
+				case MultiColumnTreeView.MyColumns.OrderID:
+					Rect minMax = GetShowArea(headerRect);
+					EditorGUI.MinMaxSlider(minMax,ref rangeID.x, ref rangeID.y, -20, 1000);
+					break;
+			}
+
+			if (GUI.changed)
+			{
+				Debug.Log("changed");
+				OnFilterSelected();
 			}
 		}
 
-		public static IOrderedEnumerable<T> ThenBy<T, TKey>(this IOrderedEnumerable<T> source, Func<T, TKey> selector, bool ascending)
+
+		List<LsInfo> GetFifterLists()
 		{
-			if (ascending)
-			{
-				return source.ThenBy(selector);
-			}
-			else
-			{
-				return source.ThenByDescending(selector);
-			}
+			List<LsInfo> infos = new List<LsInfo>(LayerAndSortingData.lSInfos);
+			if (string.IsNullOrEmpty(fifterName) == false)
+				infos = infos.Where(_ => _.name.Contains(fifterName)).ToList();
+
+			infos = infos.Where(_ => layerID == -1     || (layerID & (1 << _.Layer)) != 0).ToList();
+			infos = infos.Where(_ => sortLayerID == -1 || (sortLayerID & (1 << _.SortLayerSortID)) != 0).ToList();
+			infos = infos.Where(_ => rangeID.x == -20  || rangeID.y == 1000 || _.OrderInLayer >= rangeID.x && _.OrderInLayer <= rangeID.y).ToList();
+
+			infos.Insert(0, m_view.treeModel.root);
+
+		    return infos;
+		}
+
+		private void OnFilterSelected()
+		{
+			m_view.treeModel.SetData(GetFifterLists());
+			m_view.Reload();
+		}
+
+		public string[] GetSortingLayerNames()
+		{
+			// 使用反射获取SortingLayerUtility类
+			System.Type internalEditorUtilityType = typeof(UnityEditorInternal.InternalEditorUtility);
+			var sortingLayersProperty = internalEditorUtilityType.GetProperty("sortingLayerNames", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic);
+			return (string[])sortingLayersProperty.GetValue(null, new object[0]);
 		}
 	}
 }

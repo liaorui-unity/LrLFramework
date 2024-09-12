@@ -9,140 +9,153 @@ namespace LayerAndSorting
     public enum SortType
     {
         Render,
-        Canvas
+        Canvas,
+        Particle
+    }
+
+    public interface IInfo
+    {
+        GameObject mainGo { get; set; }  
+        string SortLayerName { get; set; }
+        int SortLayerSortID { get; set; }
+        int OrderInLayer { get; set; }
+        int Layer { get; set; }
+    }
+
+
+    public class ParticleInfo: IInfo
+    { 
+        ParticleSystemRenderer _particle;
+        public ParticleSystemRenderer particle
+        { 
+            get
+            {
+                if (_particle == null)
+                { 
+                    _particle = mainGo.GetComponent<ParticleSystemRenderer>();
+                }
+                return _particle;
+            }
+        }
+
+        public GameObject mainGo
+        {
+            get; set;
+        }
+        public string SortLayerName { get => particle.sortingLayerName; set => particle.sortingLayerName = value; }
+        public int SortLayerSortID { get; set; } = -100;
+        public int OrderInLayer { get => particle.sortingOrder; set => particle.sortingOrder =value; }
+        public int Layer { get => particle.gameObject.layer; set => particle.gameObject.layer =value; }
+    }
+
+
+    public class CanvasInfo : IInfo
+    {
+        Canvas _canvas;
+        public Canvas canvas
+        {
+            get
+            {
+                if (_canvas == null)
+                {
+                    _canvas = mainGo.GetComponent<Canvas>();
+                }
+                return _canvas;
+            }
+        }
+
+        public GameObject mainGo
+        {
+            get; set;
+        }
+        public string SortLayerName { get => canvas.sortingLayerName; set => canvas.sortingLayerName = value; }
+        public int SortLayerSortID { get; set; } = -100;
+        public int OrderInLayer { get => canvas.sortingOrder; set => canvas.sortingOrder = value; }
+        public int Layer { get => canvas.gameObject.layer; set => canvas.gameObject.layer = value; }
+    }
+
+
+    public class RenderInfo : IInfo
+    {
+        Renderer _renderer;
+        public Renderer renderer
+        {
+            get
+            {
+                if (_renderer == null)
+                {
+                    _renderer = mainGo.GetComponent<Renderer>();
+                }
+                return _renderer;
+            }
+        }
+
+        public GameObject mainGo
+        {
+            get; set;
+        }
+        public string SortLayerName { get => renderer.sortingLayerName; set => renderer.sortingLayerName = value; }
+        public int SortLayerSortID { get; set; } = -100;
+        public int OrderInLayer { get => renderer.sortingOrder; set => renderer.sortingOrder = value; }
+        public int Layer { get => renderer.gameObject.layer; set => renderer.gameObject.layer = value; }
     }
 
     public class LsInfo : TreeElement
     {
         public SortType sortType = SortType.Render;
 
-        Canvas m_Canvas;
-        Renderer m_Render;
+        public IInfo info;
 
         public GameObject mainGo
         {
-            get
-            {
-                if (sortType == SortType.Render)
-                    return m_Render.gameObject;
-                else
-                    return m_Canvas.gameObject;
-            }
+            get => info.mainGo;
+            set => info.mainGo = value;
         }
 
         public int Layer
         {
-            get
-            {
-                if (sortType == SortType.Render)
-                    return m_Render.gameObject.layer;
-                else
-                    return m_Canvas.gameObject.layer;
-            }
-            set
-            {
-                if (sortType == SortType.Render)
-                    m_Render.gameObject.layer = value;
-                else
-                    m_Canvas.gameObject.layer = value;
-            }
+            get => info.Layer;
+            set => info.Layer = value;
         }
 
-        public int SortLayerID
+        public string SortLayerName
         {
-            get
-            {
-                if (sortType == SortType.Render)
-                    return m_Render.sortingLayerID;
-                else
-                    return m_Canvas.sortingLayerID;
-            }
+            get => info.SortLayerName;
+            set => info.SortLayerName = value;
         }
+
+        public int SortLayerSortID
+        {
+            get => info.SortLayerSortID;
+            set => info.SortLayerSortID = value;
+        } 
+
 
         public int OrderInLayer
         {
-            get
-            {
-                if (sortType == SortType.Render)
-                    return m_Render.sortingOrder;
-                else
-                    return m_Canvas.sortingOrder;
-            }
+            get => info.OrderInLayer;
+            set => info.OrderInLayer = value;
         }
 
-        public LsInfo(SortType sortType, GameObject go)
+        public LsInfo(SortType sortType, GameObject go, int id)
         {
             if (go == null)
                 return;
 
             this.sortType = sortType;
+
             if (sortType == SortType.Canvas)
-                m_Canvas = go.GetComponent<Canvas>();
+                info = new CanvasInfo();
+            else if (sortType == SortType.Render)
+                info = new RenderInfo();
             else
-                m_Render = go.GetComponent<Renderer>();
+                info = new ParticleInfo();
+
+            mainGo = go;
+            name = go.name;
+            depth = 0;
+            this. id = id+3;
         }
-
-
-        public void SetLayer(int id)
-        {
-            if (sortType == SortType.Canvas)
-            {
-                if (m_Canvas != null)
-                {
-                    m_Canvas.gameObject.layer = id;
-                }
-            }
-            else
-            {
-                if (m_Render != null)
-                {
-                    m_Render.gameObject.layer = id;
-                }
-            }
-        }
-
-
-        public void SetSortLayer(int id)
-        {
-            if (sortType == SortType.Canvas)
-            {
-                if (m_Canvas != null)
-                {
-                    if (m_Canvas.overrideSorting || m_Canvas.isRootCanvas)
-                    {
-                        m_Canvas.sortingLayerID = id;
-                    }
-                }
-            }
-            else
-            {
-                if (m_Render != null)
-                {
-                    m_Render.sortingLayerID = id;
-                }
-            }
-        }
-
-        public void SetOrderInLayer(int id)
-        {
-            if (sortType == SortType.Canvas)
-            {
-                if (m_Canvas != null)
-                {
-                    if (m_Canvas.overrideSorting || m_Canvas.isRootCanvas)
-                    {
-                        m_Canvas.sortingOrder = id;
-                    }
-                }
-            }
-            else
-            {
-                if (m_Render != null)
-                {
-                    m_Render.sortingOrder = id;
-                }
-            }
-        }
-
+   
     }
 }

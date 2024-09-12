@@ -38,12 +38,36 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Low
-    uniqueID: 39381383
+  - name: low3
+    uniqueID: 3772173685
+    locked: 0
+  - name: low2
+    uniqueID: 2318805983
+    locked: 0
+  - name: low1
+    uniqueID: 3899431989
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: High
-    uniqueID: 1994252913
+  - name: high1
+    uniqueID: 1085698011
+    locked: 0
+  - name: high2
+    uniqueID: 1271530245
+    locked: 0
+  - name: high3
+    uniqueID: 1800160021
+    locked: 0
+  - name: high4
+    uniqueID: 374124157
+    locked: 0
+  - name: high5
+    uniqueID: 1831261295
+    locked: 0
+  - name: high6
+    uniqueID: 2295062585
+    locked: 0
+  - name: high7
+    uniqueID: 2266240861
     locked: 0

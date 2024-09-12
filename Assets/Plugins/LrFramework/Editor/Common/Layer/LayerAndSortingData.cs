@@ -18,10 +18,11 @@ namespace LayerAndSorting
         {
             Transform[] targets = target.GetComponentsInChildren<Transform>(true);
 
-            LsInfo main;
+            lSInfos.Clear();
+
             for (int i = 0; i < targets.Length; i++)
             {
-                main = GetMainType(targets[i].gameObject);
+               var main = GetMainType(targets[i].gameObject);
                 if (main != null)
                 {
                     lSInfos.Add(main);
@@ -33,7 +34,7 @@ namespace LayerAndSorting
          {
             typeof(Canvas),
             typeof(TrailRenderer),
-            typeof(ParticleSystemRenderer),
+            typeof(ParticleSystem),
             typeof(SpriteRenderer)
         };
 
@@ -47,11 +48,15 @@ namespace LayerAndSorting
                 {
                     if (main is Renderer)
                     {
-                        return new LsInfo(SortType.Render, go);
+                        return new LsInfo(SortType.Render, go,i);
                     }
-                    else
+                    else if (main is Canvas)
                     {
-                        return new LsInfo(SortType.Canvas, go);
+                        return new LsInfo(SortType.Canvas, go,i);
+                    }
+                    else if (main is ParticleSystem)
+                    {
+                        return new LsInfo(SortType.Particle, go,i);
                     }
                 }
             }

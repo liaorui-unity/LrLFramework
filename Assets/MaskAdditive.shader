@@ -5,12 +5,9 @@ Shader "Custom/Particles/MaskedAdditive"
         _MainTex ("粒子纹理(Particle Texture)", 2D) = "white" {}
         _MaskTex ("遮罩纹理(Mask Texture)", 2D) = "black" {}
         [HDR]_TintColor ("颜色调整(Tint Color)", Color) = (1,1,1,1)
-         _DiscardThreshold ("丢弃阈值(Discard Threshold)", Range(0,1)) = 0.1
-        _UVMainX("主UV X", Float) = 0.0
-        _UVMainY("主UV Y", Float) = 0.0
-
-        _UVMaskX("遮罩UV X", Float) = 0.0
-        _UVMaskY("遮罩UV Y", Float) = 0.0
+        _DiscardThreshold ("丢弃阈值(Discard Threshold)", Range(0,1)) = 0.1
+        _UVSpeedMain ("主纹理UV速度", Vector) = (0.1, 0.1, 0, 0)
+        _UVSpeedMask ("遮罩纹理UV速度", Vector) = (0.1, 0.1, 0, 0)
     }
     SubShader
     {
@@ -35,11 +32,11 @@ Shader "Custom/Particles/MaskedAdditive"
             float4 _TintColor;
             float _DiscardThreshold;
 
-            float _UVMainX;
-            float _UVMainY;
+            float4 _MainTex_ST;
+            float4 _MaskTex_ST;
 
-            float _UVMaskX;
-            float _UVMaskY;
+            float4 _UVSpeedMain;
+            float4 _UVSpeedMask;
 
             struct appdata_t
             {
@@ -58,8 +55,18 @@ Shader "Custom/Particles/MaskedAdditive"
             {
                 v2f o;
                 o.pos = UnityObjectToClipPos(v.vertex);
-                o.texcoord = v.texcoord + float2(_Time.y * _UVMainX,  _Time.y*_UVMainY);
-                o.maskTexcoord = v.texcoord+ float2(_Time.y*_UVMaskX, _Time.y*_UVMaskY);
+
+                // 使用贴图自带的Tiling和Offset，并添加UV移动
+                float2 mainUV = TRANSFORM_TEX(v.texcoord, _MainTex);
+                float2 maskUV = TRANSFORM_TEX(v.texcoord, _MaskTex);
+
+                // 添加UV动画
+                mainUV += _UVSpeedMain.xy * _Time.y;
+                maskUV += _UVSpeedMask.xy * _Time.y;
+
+                o.texcoord = mainUV;
+                o.maskTexcoord = maskUV;
+
                 return o;
             }
 
@@ -67,7 +74,6 @@ Shader "Custom/Particles/MaskedAdditive"
             {
                 fixed4 mainColor = tex2D(_MainTex, i.texcoord) * _TintColor;
                 fixed4 maskColor = tex2D(_MaskTex, i.maskTexcoord);
-
 
                 // 判断遮罩颜色是否为黑色（接近于0）
                 bool isBlack = maskColor.r < _DiscardThreshold && maskColor.g < _DiscardThreshold && maskColor.b < _DiscardThreshold;

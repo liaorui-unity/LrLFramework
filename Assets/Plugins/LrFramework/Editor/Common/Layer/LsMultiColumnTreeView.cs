@@ -86,17 +86,36 @@ namespace UnityEditor.TreeViewExamples
 					}
 					break;
 				case MyColumns.Layer:
-					 item.data.Layer = EditorGUI.LayerField(cellRect, item.data.Layer);
+					var lastLayer = item.data.Layer;
+					item.data.Layer = EditorGUI.LayerField(cellRect, item.data.Layer);
+					if (lastLayer != item.data.Layer)
+					{ 
+						LsMultiColumnWindow.SetDrity();
+					}
+
 					 break;
 				case MyColumns.SortingLayer:
-
 					item.data.SortLayerSortID = sortingNames.FindIndex(x => x == item.data.SortLayerName);
+
+					var lastSort = item.data.SortLayerSortID;
 					item.data.SortLayerSortID = EditorGUI.Popup(cellRect, item.data.SortLayerSortID, popSortingNames);
-					item.data.SortLayerName   = sortingNames[item.data.SortLayerSortID];
+				
+					if (lastSort != item.data.SortLayerSortID)
+					{
+						LsMultiColumnWindow.SetDrity();
+					}
+
+					item.data.SortLayerName = sortingNames[item.data.SortLayerSortID];
+
 					break;
 				case MyColumns.OrderID:
 					{
-						item.data.OrderInLayer = EditorGUI.IntField(cellRect, item.data.OrderInLayer);
+						var lastOrder = item.data.OrderInLayer;
+						item.data.OrderInLayer = EditorGUI.IntField(cellRect, lastOrder);
+						if (lastOrder != item.data.OrderInLayer)
+						{
+							LsMultiColumnWindow.SetDrity();
+						}
 					}
 					break;
 			}
@@ -109,15 +128,11 @@ namespace UnityEditor.TreeViewExamples
         protected override void SelectionChanged(IList<int> selectedIds)
 		{
 			base.SelectionChanged(selectedIds);
-
-			Debug.Log("Selected Item: " + selectedIds[0]);
-
 			if (selectedIds.Count > 0)
 			{
 				int selectedId = selectedIds[0];
 				TreeViewItem<LsInfo> selectedItem = (TreeViewItem<LsInfo>)FindItem(selectedId, rootItem);
-				Debug.Log("Selected Item: " + selectedItem.data.name);
-				// Add additional logic here for when an item is selected
+				Selection.activeObject = selectedItem.data.mainGo;
 			}
 		}
 	
@@ -131,7 +146,7 @@ namespace UnityEditor.TreeViewExamples
 					headerContent = new GUIContent("Name"),
 					headerTextAlignment = TextAlignment.Left,
 					width = 150, 
-					minWidth = 60,
+					minWidth = 100,
 					autoResize = false,
 					userData = (int)MyColumns.Name
 				},
@@ -139,8 +154,8 @@ namespace UnityEditor.TreeViewExamples
 				{
 					headerContent = new GUIContent("Layer", "In sed porta ante. Nunc et nulla mi."),
 					headerTextAlignment = TextAlignment.Left,
-					width = 110,
-					minWidth = 60,
+			      	width = 200,
+					minWidth = 150,
 					autoResize = true,
 					userData = (int)MyColumns.Layer
 				},
@@ -148,8 +163,8 @@ namespace UnityEditor.TreeViewExamples
 				{
 					headerContent = new GUIContent("SortingLayer", "Maecenas congue non tortor eget vulputate."),
 					headerTextAlignment = TextAlignment.Left,
-					width = 95,
-					minWidth = 60,
+					width = 200,
+					minWidth = 150,
 					autoResize = true,
 					userData = (int)MyColumns.SortingLayer
 
@@ -158,8 +173,8 @@ namespace UnityEditor.TreeViewExamples
 				{
 					headerContent = new GUIContent("OrderLayer", "Nam at tellus ultricies ligula vehicula ornare sit amet quis metus."),
 					headerTextAlignment = TextAlignment.Left,
-					width = 70,
-					minWidth = 60,
+					width = 250,
+					minWidth = 250,
 					autoResize = true,
 					userData = (int)MyColumns.OrderID
 				}
@@ -173,20 +188,23 @@ namespace UnityEditor.TreeViewExamples
 
     internal class LsMultiColumnHeader : MultiColumnHeader
     {
-		private string[] filterSortNames;
-		private string[] filterLayerNames;
+		public const int Max = 1000;
+		public const int Min = -20;
 
-		string _fifterName;
-		private string fifterName { get; set; }
+		internal string[] filterSortNames;
+		internal string[] filterLayerNames;
+		internal string   fifterName { get; set; }
 
 
-		private int sortLayerID = -1;
-		private int layerID = -1;
-		private Vector2 rangeID;
+		internal int sortLayerID = -1;
+		internal int layerID = -1;
+		internal Vector2 rangeID;
+
+		internal List<LsInfo> findInfos;
 
 		Rect GetShowArea(Rect headerRect)
 		{
-			return new Rect(headerRect.x + headerRect.width / 2 - 2, headerRect.y / 2 + (headerRect.height - 16) / 2, headerRect.width / 2, 16);
+			return new Rect(headerRect.x + headerRect.width / 2 - 5, headerRect.y / 2 + (headerRect.height - 16) / 2, headerRect.width / 2, 16);
 		}
 
 		private LsMultiColumnTreeView m_view;
@@ -195,15 +213,15 @@ namespace UnityEditor.TreeViewExamples
         {
 			canSort = false;
 			filterSortNames = GetSortingLayerNames();
+			height = DefaultGUI.defaultHeight + 16;
 		}
 
 
 		public void Init(LsMultiColumnWindow window, LsMultiColumnTreeView treeView)
 		{
 			m_window = window;
-
-			m_view = treeView;
-			m_view.SetSortLayer(filterSortNames);
+			m_view   = treeView;
+			m_view   . SetSortLayer(filterSortNames);
 
 			// 获取所有层的名称
 			List<string> layerNames = new List<string>();
@@ -216,6 +234,7 @@ namespace UnityEditor.TreeViewExamples
 				}
 			}
 			filterLayerNames = layerNames.ToArray();
+			findInfos = LayerAndSortingData.lSInfos;
 		}
 		
 
@@ -223,28 +242,60 @@ namespace UnityEditor.TreeViewExamples
 		{
             var columnType = (LsMultiColumnTreeView.MyColumns)column.userData;
 
-            // 显示列头文本
-            GUI.Label(headerRect, column.headerContent);
-
             switch (columnType)
 			{
 				
 				case LsMultiColumnTreeView.MyColumns.Name:
 					// 如果需要在列头显示弹出菜单
+					// 显示列头文本
+					GUI.Label(headerRect, column.headerContent);
 					Rect popupRect = GetShowArea(headerRect);
                     fifterName =  EditorGUI.TextField(popupRect, fifterName);
 					break;
 				case LsMultiColumnTreeView.MyColumns.Layer:
+					GUI.Label(headerRect, column.headerContent);
 					Rect layerRect = GetShowArea(headerRect);
 					layerID = EditorGUI.MaskField(layerRect, layerID, filterLayerNames);
 					break;
 				case LsMultiColumnTreeView.MyColumns.SortingLayer:
+					GUI.Label(headerRect, column.headerContent);
 					Rect lsortRect = GetShowArea(headerRect);
 					sortLayerID = EditorGUI.MaskField(lsortRect,sortLayerID, filterSortNames);
 					break;
 				case LsMultiColumnTreeView.MyColumns.OrderID:
-					Rect minMax = GetShowArea(headerRect);
-					EditorGUI.MinMaxSlider(minMax,ref rangeID.x, ref rangeID.y, -20, 1000);
+                    GUILayout.BeginArea(headerRect);
+					{
+						GUILayout.BeginHorizontal();
+						{
+							GUILayout.BeginVertical();
+							{
+								GUILayout.FlexibleSpace();
+								GUILayout.Label(column.headerContent);
+								GUILayout.FlexibleSpace();
+							}
+							GUILayout.EndVertical();
+
+							GUILayout.BeginVertical();
+							{
+								EditorGUILayout.MinMaxSlider(ref rangeID.x, ref rangeID.y, Min, Max);
+								GUILayout.BeginHorizontal();
+								{
+									GUILayout.Label("Min", GUILayout.Width(30));
+									rangeID.x = EditorGUILayout.FloatField(rangeID.x, GUILayout.Width(50));
+
+									GUILayout.Label("Max", GUILayout.Width(30));
+									rangeID.y = EditorGUILayout.FloatField(rangeID.y, GUILayout.Width(50));
+									//向上取整
+									rangeID.x = Mathf.RoundToInt(rangeID.x);
+									rangeID.y = Mathf.RoundToInt(rangeID.y);
+								}
+								GUILayout.EndHorizontal();
+							}
+							GUILayout.EndVertical();
+						}
+						GUILayout.EndHorizontal();
+					}
+					GUILayout.EndArea();
 					break;
 			}
 
@@ -275,7 +326,8 @@ namespace UnityEditor.TreeViewExamples
 
 		private void OnFilterSelected()
 		{
-			m_view.treeModel.SetData(GetFifterLists());
+			findInfos = GetFifterLists();
+			m_view.treeModel.SetData(findInfos);
 			m_view.Reload();
 		}
 

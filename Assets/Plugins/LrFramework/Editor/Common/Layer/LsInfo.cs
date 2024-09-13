@@ -115,26 +115,51 @@ namespace LayerAndSorting
         public int Layer
         {
             get => info.Layer;
-            set => info.Layer = value;
+            set
+            {
+                if (info.Layer != value)
+                {
+                    info.Layer = value;
+                }
+            }
         }
 
         public string SortLayerName
         {
             get => info.SortLayerName;
-            set => info.SortLayerName = value;
+            set 
+            {
+                if (info.SortLayerName != value)
+                {
+                    info.SortLayerName = value;
+                }
+            }
         }
 
         public int SortLayerSortID
         {
             get => info.SortLayerSortID;
-            set => info.SortLayerSortID = value;
+            set 
+            {
+                if (info.SortLayerSortID != value)
+                {
+                    info.SortLayerSortID = value;
+                }
+            }
         } 
 
 
         public int OrderInLayer
         {
             get => info.OrderInLayer;
-            set => info.OrderInLayer = value;
+            set
+            {
+                if (info.OrderInLayer != value)
+                {
+                    info.OrderInLayer = value;
+                }
+            }
+            
         }
 
         public LsInfo(SortType sortType, GameObject go, int id)
@@ -152,7 +177,7 @@ namespace LayerAndSorting
                 info = new ParticleInfo();
 
             mainGo = go;
-            name = go.name;
+            name   = go.name;
             this. id = id;
         }
    

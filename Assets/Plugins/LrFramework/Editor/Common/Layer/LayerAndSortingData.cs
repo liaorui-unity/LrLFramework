@@ -10,7 +10,7 @@ namespace LayerAndSorting
     {
         public static List<LsInfo> lSInfos = new List<LsInfo>();
 
-
+        public static LsInfo root = new LsInfo(SortType.Render, null, -1) { depth = -1, name = "Root" };
 
 
         /// <summary>
@@ -23,11 +23,9 @@ namespace LayerAndSorting
 
             lSInfos.Clear();
 
-
-
             for (int i = 0; i < targets.Length; i++)
             {
-                var main = GetMainType(targets[i].gameObject, lSInfos.Count);
+                var main = GetMainType(targets[i].gameObject, lSInfos.Count+1);
                 if (main != null)
                 {
                     main.depth = 0;
@@ -45,7 +43,7 @@ namespace LayerAndSorting
         };
 
 
-        public static LsInfo GetMainType(GameObject go, int id)
+        static LsInfo GetMainType(GameObject go, int id)
         {
             for (int i = 0; i < fifterTypes.Count; i++)
             {

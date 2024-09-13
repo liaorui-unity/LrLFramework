@@ -164,76 +164,104 @@ namespace UnityEditor.TreeViewExamples
     
 		void CustomView(string key)
 		{
-			GUILayout.BeginVertical("helpbox");
+			GUILayout.BeginHorizontal("helpbox");
 			{
-				GUILayout.Label(key, richTextStyle);
-				GUILayout.BeginHorizontal();
+				GUILayout.BeginVertical("helpbox");
 				{
-					GUILayout.Label($"修改当前 {key}", GUILayout.Width(120));
-					GUI.enabled = false;
+					GUILayout.Label(key, richTextStyle);
+					GUILayout.BeginHorizontal();
+					{
+						GUILayout.Label($"修改当前 {key}", GUILayout.Width(120));
+						GUI.enabled = false;
 
-					if ("Layers" == key)
-					{
-						EditorGUILayout.MaskField(lsColumnHeader.layerID, lsColumnHeader.filterLayerNames, GUILayout.Width(120));
-					}
-					else if ("SortingLayer" == key)
-					{
-						EditorGUILayout.MaskField(lsColumnHeader.sortLayerID, lsColumnHeader.filterSortNames, GUILayout.Width(120));
-					}
+						if ("Layers" == key)
+						{
+							EditorGUILayout.MaskField(lsColumnHeader.layerID, lsColumnHeader.filterLayerNames, GUILayout.Width(120));
+						}
+						else if ("SortingLayer" == key)
+						{
+							EditorGUILayout.MaskField(lsColumnHeader.sortLayerID, lsColumnHeader.filterSortNames, GUILayout.Width(120));
+						}
 
-					GUI.enabled = true;
-					GUILayout.FlexibleSpace();
-					GUILayout.Label("<----------------->");
-					GUILayout.FlexibleSpace();
-					GUILayout.Label($"修改为 {key}", GUILayout.Width(120));
+						GUI.enabled = true;
+						GUILayout.FlexibleSpace();
+						GUILayout.Label("<----------------->");
+						GUILayout.FlexibleSpace();
+						GUILayout.Label($"修改为 {key}", GUILayout.Width(120));
 
-					if ("Layers" == key)
-					{
-						changeLayerID = EditorGUILayout.Popup(changeLayerID, lsColumnHeader.filterLayerNames, GUILayout.Width(120));
+						if ("Layers" == key)
+						{
+							changeLayerID = EditorGUILayout.Popup(changeLayerID, lsColumnHeader.filterLayerNames, GUILayout.Width(120));
+						}
+						else if ("SortingLayer" == key)
+						{
+							sortLayerID = EditorGUILayout.Popup(sortLayerID, lsColumnHeader.filterSortNames, GUILayout.Width(120));
+						}
 					}
-					else if ("SortingLayer" == key)
-					{
-						sortLayerID = EditorGUILayout.Popup(sortLayerID, lsColumnHeader.filterSortNames, GUILayout.Width(120));
-					}
+					GUILayout.EndHorizontal();
 				}
-				GUILayout.EndHorizontal();
+				GUILayout.EndVertical();
+
+				GUILayout.BeginVertical("helpbox");
+				{
+					GUILayout.FlexibleSpace();
+					if (GUILayout.Button("Apply", GUILayout.Width(100), GUILayout.Height(24)))
+					{
+						Debug.Log("数据应用");
+					}
+					GUILayout.FlexibleSpace();
+				}
+				GUILayout.EndVertical();
 			}
-			GUILayout.EndVertical();
+			EditorGUILayout.EndHorizontal();
 		}
 
 		void CustomIDView()
 		{
-			GUILayout.BeginVertical("helpbox");
+			GUILayout.BeginHorizontal("helpbox");
 			{
-				GUILayout.Label("OrderID", richTextStyle);
-			
-				EditorGUILayout.BeginHorizontal();
+				GUILayout.BeginVertical("helpbox");
 				{
-					GUI.enabled = false;
+					GUILayout.Label("OrderID", richTextStyle);
 
-					GUILayout.Label($"修改当前的区间值 min[{lsColumnHeader.rangeID.x}] max[{lsColumnHeader.rangeID.y}]", GUILayout.Width(200));
-					EditorGUILayout.MinMaxSlider(ref lsColumnHeader.rangeID.x, ref lsColumnHeader.rangeID.y, -20, 1000);
-					GUI.enabled = true;
+					EditorGUILayout.BeginHorizontal();
+					{
+						GUI.enabled = false;
 
-					GUILayout.FlexibleSpace();
-					GUILayout.Label("<----------------->");
-					GUILayout.FlexibleSpace();
+						GUILayout.Label($"区间值 [{lsColumnHeader.rangeID.x},{lsColumnHeader.rangeID.y}]");
+						EditorGUILayout.MinMaxSlider(ref lsColumnHeader.rangeID.x, ref lsColumnHeader.rangeID.y, LsMultiColumnHeader.Min, LsMultiColumnHeader.Max);
+						GUI.enabled = true;
 
-					GUILayout.Label($"修改为  min[{orderRangeID.x}] max[{orderRangeID.y}]", GUILayout.Width(200));
-					EditorGUILayout.MinMaxSlider(ref orderRangeID.x, ref orderRangeID.y, LsMultiColumnHeader.Min, LsMultiColumnHeader.Max);
+						GUILayout.FlexibleSpace();
+						GUILayout.Label("<----------------->");
+						GUILayout.FlexibleSpace();
 
-					orderRangeID.x = Mathf.RoundToInt(orderRangeID.x);
-					orderRangeID.y = Mathf.RoundToInt(orderRangeID.y);
+						GUILayout.Label($"修改为  min");
+						orderRangeID.x = EditorGUILayout.IntField ((int)orderRangeID.x, GUILayout.Width(40));
+						GUILayout.Label($"max");
+						orderRangeID.y = EditorGUILayout.IntField((int)orderRangeID.y, GUILayout.Width(40));
+						EditorGUILayout.MinMaxSlider(ref orderRangeID.x, ref orderRangeID.y, LsMultiColumnHeader.Min, LsMultiColumnHeader.Max);
+
+						orderRangeID.x = Mathf.RoundToInt(orderRangeID.x);
+						orderRangeID.y = Mathf.RoundToInt(orderRangeID.y);
+					}
+					EditorGUILayout.EndHorizontal();
 				}
-			
+				GUILayout.EndVertical();
 
-				if (GUILayout.Button("Apply", GUILayout.Width(100)))
+				GUILayout.BeginVertical("helpbox");
 				{
-					Debug.Log("数据应用");
+					GUILayout.FlexibleSpace();
+					GUILayout.Label("数据应用", GUILayout.Width(100));
+					if (GUILayout.Button("Apply", GUILayout.Width(100),GUILayout.Height(24)))
+					{
+						Debug.Log("数据应用");
+					}
+					GUILayout.FlexibleSpace();
+					GUILayout.EndVertical();
 				}
 				EditorGUILayout.EndHorizontal();
 			}
-			GUILayout.EndVertical();
 		}
 
 		void ControllerView(Rect rect)
@@ -257,9 +285,9 @@ namespace UnityEditor.TreeViewExamples
 							infoSave.Next(selectGo);
 						}
 					}
-					GUILayout.Space(20);
+					GUILayout.FlexibleSpace();
 					GUILayout.Label("<----------------->");
-					GUILayout.Space(20);
+					GUILayout.FlexibleSpace();
 
 					GUI.enabled = isDrity;
 					if (GUILayout.Button("Save", GUILayout.Width(100)))
@@ -269,11 +297,7 @@ namespace UnityEditor.TreeViewExamples
 					}
 					GUI.enabled = true;
 
-					if (GUILayout.Button("Apply", GUILayout.Width(100)))
-					{
-						Debug.Log("数据应用");
-					}
-					GUILayout.FlexibleSpace();
+					GUILayout.Space(10);
 				}
 				EditorGUILayout.EndHorizontal();
 			}

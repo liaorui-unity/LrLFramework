@@ -12,13 +12,33 @@ namespace UnityEditor.TreeViewExamples
 
 	internal class LsMultiColumnWindow : EditorWindow
 	{
-		static bool isDrity = false;
-		public static void SetDrity()
+        static bool isDrity = false;
+        internal static void SetDrity()
 		{
 			isDrity = true;
-		}
+        }
 
-		[NonSerialized] bool m_Initialized;
+
+
+        static LsInfoSave infoSave;
+        internal static void Quit()
+        {
+            infoSave?.Clear();
+			SaveInfo();
+        }
+
+
+        static void SaveInfo()
+        {
+            if (infoSave != null)
+            {
+                EditorUtility.SetDirty(infoSave);
+                AssetDatabase.SaveAssets();
+            }
+        }
+
+
+        [NonSerialized] bool m_Initialized;
 		[SerializeField] TreeViewState m_TreeViewState; // Serialized in the window layout file so it survives assembly reloading
 		[SerializeField] MultiColumnHeaderState m_ColumnHeaderState;
 
@@ -26,7 +46,7 @@ namespace UnityEditor.TreeViewExamples
 		TreeModel<LsInfo> m_treeModel;
 		LsMultiColumnTreeView m_TreeView;
 
-        LsInfoSave infoSave;
+
 		GameObject selectGo;
 
 		internal List<LsInfo> m_Infos;
@@ -34,10 +54,13 @@ namespace UnityEditor.TreeViewExamples
 		internal int changeLayerID = 0;
 		internal int sortLayerID = 0;
 		internal Vector2 orderRangeID;
-	
-	 
 
-	
+		internal enum ControlType
+		{
+			Layers, SortingLayer, OrderID
+		}
+
+		internal ControlType control;
 
 		internal string[] texts
 		{ 
@@ -46,6 +69,7 @@ namespace UnityEditor.TreeViewExamples
 				return new string[] { "Layers", "SortingLayer", "OrderID" };
 			}
 		}
+
 
 		[MenuItem("TreeView Examples/Multi Columns")]
 		public static LsMultiColumnWindow GetWindow()
@@ -58,9 +82,9 @@ namespace UnityEditor.TreeViewExamples
 		}
 
 		GUIStyle richTextStyle;
-		int appendHeight = 80;
-		int appendY = 20;
-		int appendSpace = 10;
+		int appendHeight = 85;
+		int appendY      = 10;
+		int appendSpace  = 10;
 		int appendControl = 40;
 
 		Rect multiColumnTreeViewRect
@@ -75,7 +99,7 @@ namespace UnityEditor.TreeViewExamples
 
 		Rect multiControlViewRect
 		{
-			get { return new Rect(20, NextY(multiTreeViewRect), position.width - 40, appendControl); }
+			get { return new Rect(20, NextY(multiTreeViewRect)+1, position.width - 40, appendControl); }
 		}
 
 		public int NextY(Rect rect)
@@ -104,7 +128,28 @@ namespace UnityEditor.TreeViewExamples
 				selectGo = Selection . activeGameObject;
 				infoSave = Resources . Load<LsInfoSave>("LsSave");
 				richTextStyle = new GUIStyle(GUI.skin.label) { fontSize =20,fontStyle = FontStyle.Bold};
-			}
+
+
+				var find = infoSave.FindData(selectGo);
+				if (find == null)
+				{
+					infoSave.Save(selectGo, m_Infos);
+				}
+
+                for (int i = infoSave.changeDatas.Count - 1; i >= 0; i--)
+				{
+                    if (DateTime.TryParse(infoSave.changeDatas[i].savetime, out var save))
+                    {
+                        TimeSpan difference = DateTime.Now - save;
+
+                        if (difference.TotalHours > 24)
+                        {
+                            // 两个时间之间的差异大于24小时去掉
+                            infoSave.changeDatas.RemoveAt(i);
+                        }
+                    }
+                }
+            }
 		}
 
 		IList<LsInfo> GetData()
@@ -147,38 +192,42 @@ namespace UnityEditor.TreeViewExamples
 				selectID = GUILayout.Toolbar(selectID, texts);
 				if (selectID == 0)
 				{
-					CustomView("Layers");
+					control = ControlType.Layers;
+
+                    CustomView();
 				}
 				else if (selectID == 1)
 				{
-					CustomView("SortingLayer");
+                    control = ControlType.SortingLayer;
+                    CustomView();
 				}
 				else
-				{
-					CustomIDView();
+                {
+                    control = ControlType.OrderID;
+                    CustomIDView();
 				}
 				GUILayout.EndVertical();
 			}
 			GUILayout.EndArea();
 		}
     
-		void CustomView(string key)
+		void CustomView()
 		{
 			GUILayout.BeginHorizontal("helpbox");
 			{
 				GUILayout.BeginVertical("helpbox");
 				{
-					GUILayout.Label(key, richTextStyle);
+					GUILayout.Label(control.ToString(), richTextStyle);
 					GUILayout.BeginHorizontal();
 					{
-						GUILayout.Label($"修改当前 {key}", GUILayout.Width(120));
+						GUILayout.Label($"修改当前 {control}", GUILayout.Width(120));
 						GUI.enabled = false;
 
-						if ("Layers" == key)
+						if (control == ControlType.Layers)
 						{
 							EditorGUILayout.MaskField(lsColumnHeader.layerID, lsColumnHeader.filterLayerNames, GUILayout.Width(120));
 						}
-						else if ("SortingLayer" == key)
+						else if (control == ControlType.SortingLayer)
 						{
 							EditorGUILayout.MaskField(lsColumnHeader.sortLayerID, lsColumnHeader.filterSortNames, GUILayout.Width(120));
 						}
@@ -187,13 +236,13 @@ namespace UnityEditor.TreeViewExamples
 						GUILayout.FlexibleSpace();
 						GUILayout.Label("<----------------->");
 						GUILayout.FlexibleSpace();
-						GUILayout.Label($"修改为 {key}", GUILayout.Width(120));
+						GUILayout.Label($"修改为 {control}", GUILayout.Width(120));
 
-						if ("Layers" == key)
+						if (ControlType.Layers == control)
 						{
 							changeLayerID = EditorGUILayout.Popup(changeLayerID, lsColumnHeader.filterLayerNames, GUILayout.Width(120));
 						}
-						else if ("SortingLayer" == key)
+						else if (ControlType.SortingLayer == control)
 						{
 							sortLayerID = EditorGUILayout.Popup(sortLayerID, lsColumnHeader.filterSortNames, GUILayout.Width(120));
 						}
@@ -204,10 +253,11 @@ namespace UnityEditor.TreeViewExamples
 
 				GUILayout.BeginVertical("helpbox");
 				{
-					GUILayout.FlexibleSpace();
-					if (GUILayout.Button("Apply", GUILayout.Width(100), GUILayout.Height(24)))
+                    GUILayout.FlexibleSpace();
+                    GUILayout.Label("数据应用", GUILayout.Width(100));
+                    if (GUILayout.Button("Apply", GUILayout.Width(100), GUILayout.Height(24)))
 					{
-						Debug.Log("数据应用");
+                        ApplyData(control);
 					}
 					GUILayout.FlexibleSpace();
 				}
@@ -255,8 +305,9 @@ namespace UnityEditor.TreeViewExamples
 					GUILayout.Label("数据应用", GUILayout.Width(100));
 					if (GUILayout.Button("Apply", GUILayout.Width(100),GUILayout.Height(24)))
 					{
-						Debug.Log("数据应用");
-					}
+						ApplyData(ControlType.OrderID);
+						lsColumnHeader.rangeID = orderRangeID;
+                    }
 					GUILayout.FlexibleSpace();
 					GUILayout.EndVertical();
 				}
@@ -304,13 +355,55 @@ namespace UnityEditor.TreeViewExamples
 			GUILayout.EndArea();
 		}
 
+
+		void ApplyData(ControlType type)
+		{
+            switch (type)
+            {
+				case ControlType.Layers:
+
+					foreach (var item in lsColumnHeader.findInfos)
+					{
+						if (item.info == null)
+							continue;
+
+						item.Layer = changeLayerID;
+					}
+					break;
+                case ControlType.SortingLayer:
+                    foreach (var item in lsColumnHeader.findInfos)
+                    {
+                        if (item.info == null)
+                            continue;
+
+                        item.SortLayerName   = lsColumnHeader.filterSortNames[sortLayerID];
+						item.SortLayerSortID = sortLayerID;
+                    }
+                    break;
+                case ControlType.OrderID:
+                    foreach (var item in lsColumnHeader.findInfos)
+                    {
+                        if (item.info == null)
+                            continue;
+
+						var newRadio = (item.OrderInLayer - lsColumnHeader.rangeID.x) / (orderRangeID.y - orderRangeID.x);
+						item.OrderInLayer = Mathf.RoundToInt(Mathf.Lerp(orderRangeID.x, orderRangeID.y, newRadio));
+                    }
+                    break;
+            }
+
+			LsMultiColumnWindow.SetDrity();
+            lsColumnHeader.isDrity = true;
+        }
+
+
+	
+
 		void OnDisable()
-		{ 
-			if (infoSave != null)
-			{
-				EditorUtility.SetDirty(infoSave);
-				AssetDatabase.SaveAssets();
-			}
-		}
+		{
+			SaveInfo();
+            EditorUtility.SetDirty(selectGo);
+			AssetDatabase.SaveAssetIfDirty(selectGo);
+        }
 	}
 }

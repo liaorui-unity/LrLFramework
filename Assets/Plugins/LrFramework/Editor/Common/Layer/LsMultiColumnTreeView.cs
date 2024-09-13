@@ -191,6 +191,8 @@ namespace UnityEditor.TreeViewExamples
 		public const int Max = 1000;
 		public const int Min = -20;
 
+		internal bool isDrity = false;
+
 		internal string[] filterSortNames;
 		internal string[] filterLayerNames;
 		internal string   fifterName { get; set; }
@@ -198,7 +200,7 @@ namespace UnityEditor.TreeViewExamples
 
 		internal int sortLayerID = -1;
 		internal int layerID = -1;
-		internal Vector2 rangeID;
+		internal Vector2 rangeID = new Vector2(0,50);
 
 		internal List<LsInfo> findInfos;
 
@@ -299,9 +301,11 @@ namespace UnityEditor.TreeViewExamples
 					break;
 			}
 
-			if (GUI.changed)
+			if (GUI.changed|| isDrity)
 			{
-				OnFilterSelected();
+				isDrity = false;
+
+                OnFilterSelected();
 			}
 		}
 

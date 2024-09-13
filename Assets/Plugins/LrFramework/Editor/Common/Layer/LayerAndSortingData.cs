@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Rendering;
 
 namespace LayerAndSorting
 {
@@ -37,9 +37,8 @@ namespace LayerAndSorting
         static List<Type> fifterTypes = new List<Type>()
          {
             typeof(Canvas),
-            typeof(TrailRenderer),
-            typeof(ParticleSystem),
-            typeof(SpriteRenderer)
+            typeof(Renderer),
+            typeof(SortingGroup),
         };
 
 
@@ -58,9 +57,9 @@ namespace LayerAndSorting
                     {
                         return new LsInfo(SortType.Canvas, go, id);
                     }
-                    else if (main is ParticleSystem)
+                    else if (main is SortingGroup)
                     {
-                        return new LsInfo(SortType.Particle, go, id);
+                        return new LsInfo(SortType.SortGrop, go, id);
                     }
                 }
             }

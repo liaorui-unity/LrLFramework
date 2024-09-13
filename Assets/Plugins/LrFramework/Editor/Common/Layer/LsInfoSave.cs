@@ -6,10 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "LsSave.asset", menuName = "Layer/LsInfoSave")]
 public class LsInfoSave : ScriptableObject
 {
-    public System.DateTime date;
     public List<ChangeData> changeDatas;
-
- 
 
     public ChangeData FindData(GameObject selectGo)
     {
@@ -18,7 +15,7 @@ public class LsInfoSave : ScriptableObject
 
     public void Save(GameObject selectGo, List<LsInfo> findInfos)
     {
-        if(findInfos==null || findInfos.Count==0)
+        if(findInfos == null || findInfos.Count == 0)
         {
             return;
         }
@@ -27,6 +24,7 @@ public class LsInfoSave : ScriptableObject
         if (mainInfo == null)
         {
             mainInfo = new ChangeData() { mainGO = selectGo };
+            mainInfo . savetime = System.DateTime.Now.ToString();
             mainInfo . backSteps                 = new List<ChangeStep>();
             mainInfo . forwardSteps              = new List<ChangeStep>();
             changeDatas.Add(mainInfo);
@@ -122,14 +120,19 @@ public class LsInfoSave : ScriptableObject
             }
         }
     }
-    
-    
-    
+
+    public void Clear()
+    {
+        changeDatas.Clear();
+    }
+
 }
 
 [System.Serializable]
 public class ChangeData
 {
+    public string savetime;
+
     public int step
     {
         get 

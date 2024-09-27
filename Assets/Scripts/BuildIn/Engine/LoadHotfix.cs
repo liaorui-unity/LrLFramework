@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.AddressableAssets.ResourceLocators;
-
+using LogInfo;
 public class LoadHotfix : MonoBehaviour
 {
     public static string AotDll = "AotDll";
@@ -21,18 +21,18 @@ public class LoadHotfix : MonoBehaviour
 
     public async Task Load()
     {
-        Debuger.Log("加载aot dll");
+        Debug.Log("加载aot dll");
         await DownLoadLabelDlls(AotDll, aotdllAssets);
 
-        Debuger.Log("加载hot dll");
+        Debug.Log("加载hot dll");
         await DownLoadLabelDlls(HotDll, hotdllAssets);
 
-       
-        Debuger.Log("Assembly.Load => hot dll");
+
+        Debug.Log("Assembly.Load => hot dll");
 
         foreach (var asset in hotdllAssets)
         {
-            Debuger.Log("dll:"+asset.name);
+            Debug.Log("dll:"+asset.name);
 
             if (asset.name != "Assembly-CSharp.dll")
                 continue;
@@ -40,14 +40,14 @@ public class LoadHotfix : MonoBehaviour
             var assembly = Assembly.Load(asset.bytes);
             var program  = assembly.GetType("Program");
 
-            Debuger.Log("hotfix程序：" + program);
+            Debug.Log("hotfix程序：" + program);
 
             if (program != null)
             {
-                Debuger.Log("实例化aot dll");
+                Debug.Log("实例化aot dll");
                 program.GetMethod("LoadMetadataForAOTAssemblies")?.Invoke(null, null);
 
-                Debuger.Log("实例化hot dll");
+                Debug.Log("实例化hot dll");
                 program.GetMethod("Main")?.Invoke(null, null);
 
                 break;

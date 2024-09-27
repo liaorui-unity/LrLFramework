@@ -41,7 +41,7 @@ public class Program
 
         /// 注意，补充元数据是给AOT dll补充元数据，而不是给热更新dll补充元数据。
         /// 热更新dll不缺元数据，不需要补充，如果调用LoadMetadataForAOTAssembly会返回错误
-        foreach (var aotDllbyte in LoadDll.aotdllAssets)
+        foreach (var aotDllbyte in LoadHotfix.aotdllAssets)
         {
 
             // 加载assembly对应的dll，会自动为它hook。一旦aot泛型函数的native函数不存在，用解释器版本代码
